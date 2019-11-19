@@ -1,0 +1,18 @@
+columns:
+    id:
+        label: id
+        type: number
+        sortable: true
+    content:
+        label: 'itmaker.dtpapp::lang.slides.content'
+        type: text
+        searchable: true
+    is_active:
+        label: 'itmaker.dtpapp::lang.slides.is_active'
+        type: switch
+        sortable: true
+    created_at:
+        label: created_a
+        type: datetime
+        searchable: true
+        sortable: true

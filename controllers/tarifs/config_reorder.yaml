@@ -1,0 +1,4 @@
+title: Tarifs
+modelClass: Itmaker\DtpApp\Models\Tarif
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,27 @@
+fields:
+    name:
+        label: 'itmaker.dtpapp::lang.services.name'
+        span: auto
+        type: text
+    employe_group_code:
+        label: 'itmaker.dtpapp::lang.services.employe_group_code'
+        showSearch: true
+        span: auto
+        type: dropdown
+    icon:
+        label: 'itmaker.dtpapp::lang.services.icon'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    tab:
+        label: 'itmaker.dtpapp::lang.services.tab'
+        options:
+            for_specialists: 'itmaker.dtpapp::lang.services.for_specialists'
+            for_masters: 'itmaker.dtpapp::lang.services.for_masters'
+        showSearch: true
+        span: auto
+        type: dropdown

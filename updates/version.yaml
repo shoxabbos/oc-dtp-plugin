@@ -1,0 +1,41 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table itmaker_dtpapp_calls'
+    - builder_table_create_itmaker_dtpapp_calls.php
+1.0.3:
+    - 'Created table itmaker_dtpapp_services'
+    - builder_table_create_itmaker_dtpapp_services.php
+1.0.4:
+    - 'Created table itmaker_dtpapp_call_service'
+    - builder_table_create_itmaker_dtpapp_call_service.php
+1.0.5:
+    - 'Created table itmaker_dtpapp_tarifs'
+    - builder_table_create_itmaker_dtpapp_tarifs.php
+1.0.6:
+    - 'Created table itmaker_dtpapp_statuses'
+    - builder_table_create_itmaker_dtpapp_statuses.php
+1.0.7:
+    - 'Updated table itmaker_dtpapp_statuses'
+    - builder_table_update_itmaker_dtpapp_statuses.php
+1.0.8:
+    - 'Updated table itmaker_dtpapp_tarifs'
+    - builder_table_update_itmaker_dtpapp_tarifs.php
+1.0.9:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls.php
+1.0.10:
+    - 'Created table itmaker_dtpapp_slides'
+    - builder_table_create_itmaker_dtpapp_slides.php
+1.0.11:
+    - 'Updated table itmaker_dtpapp_slides'
+    - builder_table_update_itmaker_dtpapp_slides.php
+1.0.12:
+    - 'add balance to users table'
+    - migration1012.php
+1.0.13:
+    - 'Updated table itmaker_dtpapp_services'
+    - builder_table_update_itmaker_dtpapp_services.php
+1.0.14:
+    - 'Updated table itmaker_dtpapp_services'
+    - builder_table_update_itmaker_dtpapp_services2.php

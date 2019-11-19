@@ -1,0 +1,10 @@
+name: Services
+form: $/itmaker/dtpapp/models/service/fields.yaml
+modelClass: Itmaker\DtpApp\Models\Service
+defaultRedirect: itmaker/dtpapp/services
+create:
+    redirect: 'itmaker/dtpapp/services/update/:id'
+    redirectClose: itmaker/dtpapp/services
+update:
+    redirect: itmaker/dtpapp/services
+    redirectClose: itmaker/dtpapp/services

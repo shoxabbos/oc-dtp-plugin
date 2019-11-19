@@ -1,0 +1,19 @@
+fields:
+    name:
+        label: 'itmaker.dtpapp::lang.tarifs.name'
+        span: auto
+        type: text
+    employe_group_code:
+        label: 'itmaker.dtpapp::lang.tarifs.employe_group_type'
+        showSearch: true
+        span: auto
+        type: dropdown
+    description:
+        label: 'itmaker.dtpapp::lang.tarifs.description'
+        size: ''
+        span: auto
+        type: textarea
+    amount:
+        label: 'itmaker.dtpapp::lang.tarifs.amount'
+        span: auto
+        type: text

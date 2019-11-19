@@ -1,0 +1,9 @@
+employe:
+    label: 'itmaker.dtpapp::lang.calls.employe'
+    nameFrom: name
+    descriptionFrom: surname
+    list: $/rainlab/user/models/user/columns.yaml
+    span: full
+    type: recordfinder
+    tab: 'itmaker.dtpapp::lang.calls.employe'
+    scope: isEmploye

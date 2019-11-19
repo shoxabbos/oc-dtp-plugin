@@ -1,0 +1,10 @@
+name: Calls
+form: $/itmaker/dtpapp/models/call/fields.yaml
+modelClass: Itmaker\DtpApp\Models\Call
+defaultRedirect: itmaker/dtpapp/calls
+create:
+    redirect: 'itmaker/dtpapp/calls/update/:id'
+    redirectClose: itmaker/dtpapp/calls
+update:
+    redirect: itmaker/dtpapp/calls
+    redirectClose: itmaker/dtpapp/calls

@@ -1,0 +1,13 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: 'itmaker.dtpapp::lang.statuses.name'
+        type: text
+    code:
+        label: 'itmaker.dtpapp::lang.statuses.code'
+        type: text
+    is_active:
+        label: 'itmaker.dtpapp::lang.statuses.is_active'
+        type: switch

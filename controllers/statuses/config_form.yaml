@@ -1,0 +1,10 @@
+name: Statuses
+form: $/itmaker/dtpapp/models/status/fields.yaml
+modelClass: Itmaker\DtpApp\Models\Status
+defaultRedirect: itmaker/dtpapp/statuses
+create:
+    redirect: 'itmaker/dtpapp/statuses/update/:id'
+    redirectClose: itmaker/dtpapp/statuses
+update:
+    redirect: itmaker/dtpapp/statuses
+    redirectClose: itmaker/dtpapp/statuses

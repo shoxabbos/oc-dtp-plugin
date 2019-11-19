@@ -1,0 +1,66 @@
+fields:
+    status:
+        label: 'itmaker.dtpapp::lang.calls.status'
+        showSearch: true
+        span: auto
+        type: dropdown
+    created_at:
+        label: 'itmaker.dtpapp::lang.calls.created_at'
+        mode: datetime
+        span: auto
+        type: datepicker
+    addantial_comment:
+        label: 'itmaker.dtpapp::lang.calls.addantial_comment'
+        size: ''
+        span: auto
+        type: textarea
+    employe_group:
+        label: 'itmaker.dtpapp::lang.calls.employe_group_code'
+        showSearch: true
+        span: auto
+        type: dropdown
+tabs:
+    fields:
+        coor_lat:
+            label: 'itmaker.dtpapp::lang.calls.coor_lat'
+            span: auto
+            type: text
+            tab: 'itmaker.dtpapp::lang.calls.params'
+        coor_long:
+            label: 'itmaker.dtpapp::lang.calls.coor_long'
+            span: auto
+            type: text
+            tab: 'itmaker.dtpapp::lang.calls.params'
+        map:
+            span: full
+            label: 'itmaker.dtpapp::lang.calls.map'
+            type: partial
+            tab: 'itmaker.dtpapp::lang.calls.params'
+        address:
+            label: 'itmaker.dtpapp::lang.calls.address'
+            span: full
+            type: text
+            tab: 'itmaker.dtpapp::lang.calls.params'
+        services:
+            label: 'itmaker.dtpapp::lang.calls.services'
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: 'itmaker.dtpapp::lang.calls.params'
+        images:
+            label: 'itmaker.dtpapp::lang.calls.images'
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: auto
+            type: fileupload
+            tab: 'itmaker.dtpapp::lang.calls.params'
+        updated_at@update:
+            label: 'itmaker.dtpapp::lang.calls.updated_at'
+            type: datepicker
+            span: auto
+            disabled: true
+            tab: 'itmaker.dtpapp::lang.calls.params'

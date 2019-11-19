@@ -1,0 +1,30 @@
+client[name]:
+    label: 'itmaker.dtpapp::lang.calls.clients.name'
+    type: text
+    disabled: true
+    tab: 'itmaker.dtpapp::lang.calls.client'
+    span: left
+client[avatar]:
+    label: 'itmaker.dtpapp::lang.calls.clients.avatar'
+    type: fileupload
+    disabled: true
+    tab: 'itmaker.dtpapp::lang.calls.client'
+    span: right
+client[surname]:
+    label: 'itmaker.dtpapp::lang.calls.clients.surname'
+    type: text
+    disabled: true
+    tab: 'itmaker.dtpapp::lang.calls.client'
+    span: left
+client[username]:
+    label: 'itmaker.dtpapp::lang.calls.clients.phone'
+    type: text
+    disabled: true
+    tab: 'itmaker.dtpapp::lang.calls.client'
+    span: left
+client[email]:
+    label: E-mail
+    type: text
+    disabled: true
+    tab: 'itmaker.dtpapp::lang.calls.client'
+    span: left

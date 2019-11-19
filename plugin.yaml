@@ -1,0 +1,58 @@
+plugin:
+    name: 'itmaker.dtpapp::lang.plugin.name'
+    description: 'itmaker.dtpapp::lang.plugin.description'
+    author: ITmaker
+    icon: oc-icon-adjust
+    homepage: ''
+permissions:
+    manage_calls:
+        tab: 'itmaker.dtpapp::lang.plugin.name'
+        label: 'itmaker.dtpapp::lang.permissions.manage_calls'
+    manage_tarifs:
+        tab: 'itmaker.dtpapp::lang.plugin.name'
+        label: 'itmaker.dtpapp::lang.permissions.manage_tarifs'
+    manage_services:
+        tab: 'itmaker.dtpapp::lang.plugin.name'
+        label: 'itmaker.dtpapp::lang.permissions.manage_services'
+    manage_statuses:
+        tab: 'itmaker.dtpapp::lang.plugin.name'
+        label: 'itmaker.dtpapp::lang.permissions.manage_statuses'
+    manage_slides:
+        tab: 'itmaker.dtpapp::lang.plugin.name'
+        label: 'itmaker.dtpapp::lang.permissions.manage_slides'
+navigation:
+    calls:
+        label: 'itmaker.dtpapp::lang.menu.calls'
+        url: itmaker/dtpapp/calls
+        icon: icon-phone-square
+        sideMenu:
+            calls:
+                label: 'itmaker.dtpapp::lang.menu.calls'
+                url: itmaker/dtpapp/calls
+                icon: icon-phone
+                permissions:
+                    - manage_calls
+            tarifs:
+                label: 'itmaker.dtpapp::lang.menu.tarifs'
+                url: itmaker/dtpapp/tarifs
+                icon: icon-dollar
+                permissions:
+                    - manage_tarifs
+            services:
+                label: 'itmaker.dtpapp::lang.menu.services'
+                url: itmaker/dtpapp/services
+                icon: icon-slack
+                permissions:
+                    - manage_services
+            statuses:
+                label: 'itmaker.dtpapp::lang.menu.statuses'
+                url: itmaker/dtpapp/statuses
+                icon: icon-signal
+                permissions:
+                    - manage_statuses
+            slides:
+                label: 'itmaker.dtpapp::lang.menu.slides'
+                url: itmaker/dtpapp/slides
+                icon: icon-sliders
+                permissions:
+                    - manage_slides

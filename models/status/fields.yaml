@@ -1,0 +1,19 @@
+fields:
+    name:
+        label: 'itmaker.dtpapp::lang.statuses.name'
+        span: auto
+        type: text
+    code:
+        label: 'itmaker.dtpapp::lang.statuses.code'
+        span: auto
+        trigger:
+            action: ''
+            field: name
+        preset:
+            field: name
+            type: ''
+        type: text
+    is_active:
+        label: 'itmaker.dtpapp::lang.statuses.is_active'
+        span: auto
+        type: switch

@@ -1,0 +1,20 @@
+fields:
+    content:
+        label: 'itmaker.dtpapp::lang.slides.content'
+        size: large
+        span: left
+        type: textarea
+    image:
+        label: 'itmaker.dtpapp::lang.slides.image'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        type: fileupload
+    is_active:
+        label: 'itmaker.dtpapp::lang.slides.is_active'
+        span: auto
+        default: 1
+        type: switch

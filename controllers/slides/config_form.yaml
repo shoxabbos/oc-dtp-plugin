@@ -1,0 +1,10 @@
+name: Slides
+form: $/itmaker/dtpapp/models/slide/fields.yaml
+modelClass: Itmaker\DtpApp\Models\Slide
+defaultRedirect: itmaker/dtpapp/slides
+create:
+    redirect: 'itmaker/dtpapp/slides/update/:id'
+    redirectClose: itmaker/dtpapp/slides
+update:
+    redirect: itmaker/dtpapp/slides
+    redirectClose: itmaker/dtpapp/slides

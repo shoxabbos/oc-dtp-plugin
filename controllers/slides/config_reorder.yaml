@@ -1,0 +1,5 @@
+title: Slides
+modelClass: Itmaker\DtpApp\Models\Slide
+nameFrom: content
+toolbar:
+    buttons: reorder_toolbar

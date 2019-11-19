@@ -1,0 +1,4 @@
+title: Statuses
+modelClass: Itmaker\DtpApp\Models\Status
+toolbar:
+    buttons: reorder_toolbar

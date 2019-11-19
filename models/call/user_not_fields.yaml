@@ -1,0 +1,9 @@
+client:
+    label: 'itmaker.dtpapp::lang.calls.client'
+    nameFrom: name
+    descriptionFrom: surname
+    list: $/rainlab/user/models/user/columns.yaml
+    span: full
+    type: recordfinder
+    tab: 'itmaker.dtpapp::lang.calls.client'
+    scope: isClient

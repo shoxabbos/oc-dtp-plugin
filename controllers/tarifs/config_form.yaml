@@ -1,0 +1,10 @@
+name: Tarifs
+form: $/itmaker/dtpapp/models/tarif/fields.yaml
+modelClass: Itmaker\DtpApp\Models\Tarif
+defaultRedirect: itmaker/dtpapp/tarifs
+create:
+    redirect: 'itmaker/dtpapp/tarifs/update/:id'
+    redirectClose: itmaker/dtpapp/tarifs
+update:
+    redirect: itmaker/dtpapp/tarifs
+    redirectClose: itmaker/dtpapp/tarifs

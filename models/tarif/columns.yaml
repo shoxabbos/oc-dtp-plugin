@@ -1,0 +1,30 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: 'itmaker.dtpapp::lang.tarifs.name'
+        type: text
+    description:
+        label: 'itmaker.dtpapp::lang.tarifs.description'
+        type: text
+    employe_group:
+        label: 'itmaker.dtpapp::lang.services.employe_group_code'
+        type: text
+        select: name
+        relation: employe_group
+    amount:
+        label: 'itmaker.dtpapp::lang.tarifs.amount'
+        type: text
+    created_at:
+        label: 'itmaker.dtpapp::lang.tarifs.created_at'
+        type: datetime
+        invisible: true
+    updated_at:
+        label: 'itmaker.dtpapp::lang.tarifs.updated_at'
+        type: datetime
+        invisible: true
+    deleted_at:
+        label: deleted_at
+        type: datetime
+        invisible: true

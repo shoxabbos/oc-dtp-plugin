@@ -1,0 +1,4 @@
+title: Services
+modelClass: Itmaker\DtpApp\Models\Service
+toolbar:
+    buttons: reorder_toolbar
