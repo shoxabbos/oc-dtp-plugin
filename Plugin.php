@@ -1,7 +1,9 @@
 <?php namespace Itmaker\DtpApp;
 
+use App;
 use Yaml;
 use System\Classes\PluginBase;
+use \Illuminate\Foundation\AliasLoader;
 use Rainlab\User\Models\User as UserModel;
 use Rainlab\User\Models\UserGroup as UserGroupModel;
 use Rainlab\User\Models\Settings as UserSettings;
@@ -28,6 +30,7 @@ class Plugin extends PluginBase
     {
         $this->extendingModels();
         $this->extendingControllers();
+        $this->extendingApp();
     }
 
 
@@ -43,6 +46,7 @@ class Plugin extends PluginBase
             ];
             $model->hasMany['calls'] = [ CallModel::class, 'key' => 'client_id'];
             $model->hasMany['employe_calls'] = [ CallModel::class, 'key' => 'employe_id'];
+            $model->hasMany['locations'] = \Itmaker\DtpApp\Models\EmployeesLocation::class;
 
         });
     }
@@ -72,5 +76,12 @@ class Plugin extends PluginBase
             }
 
         });
+    }
+
+    public function extendingApp()
+    {
+        App::register('Itmaker\DtpApp\Providers\PusherServiceProvider');
+        $alias = AliasLoader::getInstance();
+        $alias->alias('pusher', 'Itmaker\DtpApp\Providers\PusherServiceProvider');
     }
 }

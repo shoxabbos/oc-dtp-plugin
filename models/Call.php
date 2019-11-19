@@ -1,9 +1,10 @@
 <?php namespace Itmaker\DtpApp\Models;
 
+use App;
 use Model;
 use Rainlab\User\Models\UserGroup;
 /**
- * Model
+ * Model call
  */
 class Call extends Model
 {
@@ -47,18 +48,28 @@ class Call extends Model
 
     public function getStatusOptions()
     {
-        return Status::where('is_active', true)->orderBy('sort_order', 'asc')->lists('name', 'id');
+        return Status::where('is_active', true)
+                ->orderBy('sort_order', 'asc')->lists('name', 'id');
     }
 
+    /**
+     * @return userGroup codes except clients
+     */
     public function getEmployeGroupOptions()
     {
         return UserGroup::where('code', '!=','clients')->lists('name', 'code');
     }
 
+    /**
+     * @method mixed called when save model
+     */
     public function beforeSave()
     {
-        if ($this->status->code == 'approved'){
-           dump('ok');
+        if (!empty($this->status)) {
+            if ($this->status->code == 'approved'){
+                $pusher = App::make('pusher');
+                $pusher->trigger('call', 'new-call', $this);
+            }
         }
     }
 }

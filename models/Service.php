@@ -31,6 +31,15 @@ class Service extends Model
     public $rules = [
     ];
 
+    /**
+     * Softly implement the TranslatableModel behavior.
+     */
+    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+
+    /**
+     * @var array Attributes that support translation, if available.
+     */
+    public $translatable = ['name'];
 
     public $attachOne = [
         'icon' => \System\Models\File::class

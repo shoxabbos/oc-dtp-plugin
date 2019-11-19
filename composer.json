@@ -3,13 +3,13 @@
     "description": "Add real-time features to your OctoberCMS app",
     "type": "library",
     "require": {
-        "cboden/ratchet": "^0.3.5"
+        "pusher/pusher-php-server": "*"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": "itmaker",
-            "email": "info@itmaker.uz"
+            "name": "Sasha Raimov",
+            "email": "alexweb0704@gmail.com"
         }
     ],
     "minimum-stability": "dev"

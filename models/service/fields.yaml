@@ -17,11 +17,3 @@ fields:
             extension: auto
         span: auto
         type: fileupload
-    tab:
-        label: 'itmaker.dtpapp::lang.services.tab'
-        options:
-            for_specialists: 'itmaker.dtpapp::lang.services.for_specialists'
-            for_masters: 'itmaker.dtpapp::lang.services.for_masters'
-        showSearch: true
-        span: auto
-        type: dropdown

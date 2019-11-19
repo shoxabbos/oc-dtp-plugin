@@ -4,6 +4,7 @@ use Model;
 
 /**
  * Model
+ * @method static where(string $string, bool $true)
  */
 class Status extends Model
 {

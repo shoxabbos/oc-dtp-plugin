@@ -28,6 +28,16 @@ class Tarif extends Model
     ];
 
     /**
+     * Softly implement the TranslatableModel behavior.
+     */
+    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+    
+    /**
+     * @var array Attributes that support translation, if available
+     */
+    public $translatable = ['name', 'description', 'amount'];
+
+    /**
      * @var array Belongs To 
      */
 

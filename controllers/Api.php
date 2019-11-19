@@ -1,5 +1,6 @@
 <?php namespace Itmaker\DtpApp\Controllers;
 
+use Lang;
 use Input;
 use JWTAuth;
 use Validator;
@@ -21,7 +22,6 @@ class Api extends Controller
         return JWTAuth::parseToken()->authenticate();
     }
 
-
     public function index()
     {
         $services = ServiceModel::where('parent_id', null)->with('childrens', 'childrens.childrens', 'icon', 'childrens.icon')->get();
@@ -35,181 +35,6 @@ class Api extends Controller
                         ->with('image')->get();
 
         return response()->json(compact('slides'));
-    }
-
-    public function register()
-    {
-    	$credentials = Input::only('name', 'surname', 'email', 'phone', 'password', 'password_confirmation');
-    	$rules = [
-            'name'      => 'required|min:3',
-            'surname'   => 'required|min:3',
-    		'phone'	    => 'required|unique:users,username',
-    		'password'	=> 'required|min:6|confirmed',
-            'email'     => 'required|min:3|email'
-    	];
-
-
-    	$validation = Validator::make($credentials, $rules);
-
-    	if ($validation->fails()){
-    		return response()->json(['errors' => $validation->errors()], 401);
-    	}
-    	$credentials['username'] = $credentials['phone'];
-    	unset($credentials['phone']);
-    	
-
-    	try {
-    		$userModel = UserModel::create($credentials);
-    		$user = UserModel::find($userModel->id);
-    		$user->phone = $user->username;
-	        $token = JWTAuth::fromUser($userModel);
-    	} catch (Exception $e) {
-    		return response()->json(['error' => $e->getMessage()], 401);
-    	}
-
-        if ($group = UserGroupModel::where('code', 'clients')->first()){
-            $userModel->groups = $group;
-            $userModel->update();
-        }
-
-    	return response()->json(compact('token', 'user'));
-    }
-
-    public function login()
-    {
-    	$data = Input::only('login', 'password');
-
-    	$rules = [
-    		'login' => 'required|exists:users,username',
-    		'password' => 'required'
-    	];
-
-    	$validation = Validator::make($data, $rules);
-
-    	if ($validation->fails()){
-    		return response()->json(['errors' => $validation->errors()], 401);
-    	}
-
-    	$credentials = [
-    		'username' => $data['login'],
-    		'password' => $data['password']
-    	];
-
-    	try {
-            // verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json([
-                    'error' => [
-                        'password' => 'wrong password'
-                    ]
-                ], 401);
-            }
-        } catch (JWTException $e) {
-            // something went wrong
-            return response()->json(['error' => 'could_not_create_token'], 500);
-        }
-
-        $userModel = JWTAuth::authenticate($token);
-        if ($userModel->methodExists('getAuthApiSigninAttributes')) {
-            $user = $userModel->getAuthApiSigninAttributes();
-        } else {
-            $user = [
-                'id' => $userModel->id,
-                'name' => $userModel->name,
-                'surname' => $userModel->surname,
-                'username' => $userModel->username,
-                'email' => $userModel->email,
-                'is_activated' => $userModel->is_activated,
-                'user_role' => $userModel->user_role
-            ];
-        }
-
-        return response()->json(compact('token', 'user'));
-    }
-
-    public function employeLogin()
-    {
-        $data = Input::only('login', 'password');
-
-        $rules = [
-            'login' => 'required|exists:users,username',
-            'password' => 'required'
-        ];
-
-        $validation = Validator::make($data, $rules);
-
-        if ($validation->fails()){
-            return response()->json(['errors' => $validation->errors()], 401);
-        }
-
-        $credentials = [
-            'username' => $data['login'],
-            'password' => $data['password']
-        ];
-
-        try {
-            // verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json([
-                    'error' => [
-                        'password' => 'wrong password'
-                    ]
-                ], 401);
-            }
-        } catch (JWTException $e) {
-            // something went wrong
-            return response()->json(['error' => 'could_not_create_token'], 500);
-        }
-
-        $userModel = JWTAuth::authenticate($token);
-        if ($userModel->methodExists('getAuthApiSigninAttributes')) {
-            $user = $userModel->getAuthApiSigninAttributes();
-        } else {
-            $user = [
-                'id' => $userModel->id,
-                'name' => $userModel->name,
-                'surname' => $userModel->surname,
-                'username' => $userModel->username,
-                'email' => $userModel->email,
-                'is_activated' => $userModel->is_activated,
-                'user_role' => $userModel->user_role
-            ];
-        }
-
-        $userGroups = $userModel->groups()->where('code', '!=','clients')->get();
-        if ($userGroups->isEmpty()){
-            return response()->json('error credentials', 404);
-        }
-
-        return response()->json(compact('token', 'user'));
-    }
-
-    public function getUser()
-    {
-    	$user = $this->auth();
-
-    	$user->phone = $user->username;
-
-    	return response()->json(compact('user'));
-    }
-
-    public function updateUser()
-    {
-    	$user = $this->auth();
-
-    	$data = Input::only('username', 'name', 'surname', 'password', 'password_confirmation');
-
-    	if (Input::hasFile('avatar')) {
-            $user->avatar = Input::file('avatar');
-        }
-
-        try {
-            $user->fill(post());
-            $user->save();
-            return response()->json($user);
-        } catch (\Exception $e) {
-            return response()->json(['errors' => $e->getMessage()]);
-        }
     }
 
     public function calling()
@@ -229,13 +54,21 @@ class Api extends Controller
     	$rules = [
     		'services'            => 'array',
     		'addantial_comment' => 'string',
-    		'employe_group_code'  => 'required|in:specialists,masters',
+    		'employe_group_code'  => 'required|exists:user_groups,code',
     		'coor_lat'	          => 'required',
     		'coor_long'	          => 'required',
             'address'             => 'required|min:4',
             'images'              => 'array'
     	];
-    	$validation = Validator::make($data, $rules);
+
+    	$messages = [
+    	    'address.required' => Lang::get('itmaker.dtpapp::lang.messages.address.required'),
+    	    'address.min'       => Lang::get('itmaker.dtpapp::lang.messages.address.min4'),
+            'coor_lat.required'  => Lang::get('itmaker.dtpapp::lang.messages.coordinates.required'),
+            'coor_long.required'  => Lang::get('itmaker.dtpapp::lang.messages.coordinates.required'),
+        ];
+
+    	$validation = Validator::make($data, $rules, $messages);
 
     	if ($validation->fails()){
     		return response()->json(['errors' => $validation->errors()]);
@@ -266,11 +99,13 @@ class Api extends Controller
     	return response()->json(compact('call'));
     }
 
-    public function callsHistory()
+    public function callsHistory($page = 1)
     {
     	$user = $this->auth();
 
-    	$calls = $user->calls()->with('services', 'employe', 'client', 'employe_group', 'images', 'status')->get();
+    	$calls = $user->calls()
+                    ->with('services', 'employe', 'client', 'employe_group', 'images', 'status')
+                    ->paginate(10, $page);
 
     	if (!$calls) {
     		return response()->json('calls not found', 404);
@@ -298,8 +133,9 @@ class Api extends Controller
         return response()->json(compact('call'));
     }
 
-    public function activeCalls()
+    public function activeCalls($page = 1)
     {
+
     	$user = $this->auth();
 
         $groupCodes = [];
@@ -318,7 +154,7 @@ class Api extends Controller
             'client', 
             'employe', 
             'employe_group', 
-            'services')->get();
+            'services')->paginate(10, $page);
 
     	if (empty($calls)){
     		return response()->json('active calls not found');
