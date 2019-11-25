@@ -1,4 +1,4 @@
-<?php namespace Itmaker\DtpApp\Controllers;
+<?php namespace Itmaker\DtpApp\Controllers\Api;
 
 use Lang;
 use Input;
@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 use Itmaker\DtpApp\Models\EmployeesLocation;
 
 
-class LocationsApi extends Controller
+class Locations extends Controller
 {
 	private function auth() 
     {
@@ -42,12 +42,10 @@ class LocationsApi extends Controller
 
     	$location = $user->locations()->orderByDesc('id')->first();
 
-    	return response()->json(compact('location'));
+    	return $location;
     }
 
-    public function get($id)
-    {
-
+    public function get($id) {
     	$location = EmployeesLocation::where('user_id', $id)->orderByDesc('id')->with('user')->first();
 
     	if (!$location) {
@@ -60,5 +58,6 @@ class LocationsApi extends Controller
 
     	return response()->json(compact('location'));
    	}
+    
 
 }
