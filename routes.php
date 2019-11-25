@@ -44,6 +44,6 @@ Route::group([
 	Route::get('/calls/spents', 'itmaker\dtpapp\controllers\Api@mySpents');
 	Route::post('/call/employed', 'itmaker\dtpapp\controllers\Api@callEmployed');
 	Route::post('/call/complated', 'itmaker\dtpapp\controllers\Api@callComplated');
-	Route::post('/locations/set', 'itmaker\dtpapp\controllers\api\Locations@set');
-	Route::get('/locations/get/{id}', 'itmaker\dtpapp\controllers\api\Locations@get');
+	Route::post('/locations/set', 'itmaker\dtpapp\api\Locations@set');
+	Route::get('/locations/get/{id}', 'itmaker\dtpapp\api\Locations@get');
 });

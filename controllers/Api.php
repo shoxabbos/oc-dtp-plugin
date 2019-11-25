@@ -202,8 +202,9 @@ class Api extends Controller
         $activeStatus = StatusModel::where('code', 'active')->first();
 
         if ($user->balance < 10000){
-            return response()->json('insufficient funds in the account');
+            //return response()->json('insufficient funds in the account');
         }
+
         $user->balance = $user->balance - 10000;
         $user->update();
 
