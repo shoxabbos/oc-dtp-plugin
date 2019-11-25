@@ -7,6 +7,7 @@ use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Itmaker\DtpApp\Models\EmployeesLocation;
+use Itmaker\DtpApp\Resources\LocationResource;
 
 
 class Locations extends Controller
@@ -40,9 +41,9 @@ class Locations extends Controller
 
     	$user->locations()->create($location);
 
-    	$location = $user->locations()->orderByDesc('id')->first();
+    	$location = $user->locations()->with('user')->orderByDesc('id')->first();
 
-    	return $location;
+        return new LocationResource($location);
     }
 
     public function get($id) {
@@ -56,7 +57,7 @@ class Locations extends Controller
     		]);
     	}
 
-    	return response()->json(compact('location'));
+    	return new LocationResource($location);
    	}
     
 
