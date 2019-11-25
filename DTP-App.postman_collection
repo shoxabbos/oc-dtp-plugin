@@ -1,0 +1,700 @@
+{
+	"id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+	"name": "DTP App",
+	"description": "",
+	"order": [
+		"bbbca5c7-4107-b8ca-dff1-239a056db46d",
+		"5b593591-d044-7f72-2d5b-26ec33f28a0e",
+		"d92c5d59-8af2-6ed4-bc19-17f32f171774"
+	],
+	"folders": [
+		{
+			"id": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
+			"name": "client",
+			"description": "",
+			"order": [
+				"30edb8ba-ed39-b848-c179-a0b60f766ca3",
+				"c09f541f-54b7-dc32-f05b-955805d587c6",
+				"3701d297-0e03-d5fc-f9e7-3058c1772f50",
+				"04d7b7ec-32e2-9171-f48b-689e999ca50e",
+				"20796865-9984-990a-c39e-6695f92f8b29",
+				"b2ad242f-8eaa-c969-69f2-ce31d29581e8",
+				"f7b10c09-20f3-c84a-c310-21ffc4dd876d",
+				"1a9f8cdc-d9d3-9fb8-f45c-74005f9d9067"
+			],
+			"folders_order": [],
+			"owner": "498191",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+		},
+		{
+			"id": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
+			"name": "empole",
+			"description": "",
+			"order": [
+				"0b9b64bf-984d-1919-3fcd-e34cd5c5263a",
+				"2cd72fd5-a5a2-651e-1311-1be9c6c8d54a",
+				"e0090636-daa2-15c4-fa77-8d06ac620ec4",
+				"0584fcd2-c8cd-3c5d-6efd-def6d05ca3b7",
+				"03c2ef21-1e6e-7f34-d551-fc83875d7c41",
+				"21a768b9-f2da-03c0-e530-adb6823ac856",
+				"1cf69f26-2509-02e4-9ef5-43415e82bf6b",
+				"320c140d-cd84-f056-05b6-47d46deafce0"
+			],
+			"folders_order": [],
+			"owner": "498191",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+		},
+		{
+			"id": "0669b24a-5a76-ba51-8760-83deb764ad1b",
+			"name": "master",
+			"description": "",
+			"order": [
+				"6e066e9d-f190-4881-4dc1-661645f7001f",
+				"9baa191f-c903-f9b1-4d41-74447b3b0090"
+			],
+			"folders_order": [],
+			"owner": "498191",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+		}
+	],
+	"folders_order": [
+		"b1235bc5-aabc-49b6-20b8-0e2986763aa8",
+		"a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
+		"0669b24a-5a76-ba51-8760-83deb764ad1b"
+	],
+	"timestamp": 0,
+	"owner": "498191",
+	"public": false,
+	"requests": [
+		{
+			"id": "03c2ef21-1e6e-7f34-d551-fc83875d7c41",
+			"name": "{{domain}}/employe/call/complated",
+			"description": "etot metod dlya zaversheniya vizova peredayetsya call_id,\nposle chego call->status ravnyayetsya 'complated', oznochayet chto vizov zavershyen\n",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"helperAttributes": {},
+			"headers": "",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "call_id",
+					"value": "6",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/employe/call/complated",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
+		},
+		{
+			"id": "04d7b7ec-32e2-9171-f48b-689e999ca50e",
+			"name": "{{domain}}/client/calling",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"helperAttributes": {},
+			"headers": "",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "services[]",
+					"value": "6",
+					"type": "text"
+				},
+				{
+					"key": "services[]",
+					"value": "4",
+					"type": "text"
+				},
+				{
+					"key": "employe_group_code",
+					"value": "specialists",
+					"type": "text"
+				},
+				{
+					"key": "addantial_comment",
+					"value": "rebyenok isterit",
+					"type": "text"
+				},
+				{
+					"key": "coor_lat",
+					"value": "12.3432423423",
+					"type": "text"
+				},
+				{
+					"key": "coor_long",
+					"value": "11.2342342234",
+					"type": "text"
+				},
+				{
+					"key": "address",
+					"value": "tashkent",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/client/calling",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
+		},
+		{
+			"id": "0584fcd2-c8cd-3c5d-6efd-def6d05ca3b7",
+			"name": "{{domain}}/employe/calls/spents",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"helperAttributes": {},
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/employe/calls/spents",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
+		},
+		{
+			"id": "0b9b64bf-984d-1919-3fcd-e34cd5c5263a",
+			"name": "{{domain}}/employe/login",
+			"description": "vxod sotridnika",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"headers": "Active-Locale: ru",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "login",
+					"value": "+998903297989",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "123123",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/specialist/login",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Active-Locale",
+					"value": "ru",
+					"type": "text"
+				}
+			],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
+		},
+		{
+			"id": "1a9f8cdc-d9d3-9fb8-f45c-74005f9d9067",
+			"name": "update user",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"helperAttributes": {},
+			"headers": "",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "username",
+					"value": "+998913297989",
+					"type": "text"
+				},
+				{
+					"key": "name",
+					"value": "Sasha",
+					"type": "text"
+				},
+				{
+					"key": "surname",
+					"value": "Raimov",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "asdqwe",
+					"type": "text"
+				},
+				{
+					"key": "password_confirmation",
+					"value": "asdqwe",
+					"type": "text"
+				},
+				{
+					"key": "avatar",
+					"type": "file",
+					"src": "/D:/Downloads/koleso.png",
+					"value": ""
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/client/update-user",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
+		},
+		{
+			"id": "1cf69f26-2509-02e4-9ef5-43415e82bf6b",
+			"name": "{{domain}}/employe/loactions/set",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"helperAttributes": {},
+			"headers": "Active-Locale: ru",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "coor_lat",
+					"value": "11.2323423334532",
+					"type": "text"
+				},
+				{
+					"key": "coor_long",
+					"value": "12.2342346234432",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/employe/locations/set",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Active-Locale",
+					"value": "ru",
+					"type": "text"
+				}
+			],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
+		},
+		{
+			"id": "20796865-9984-990a-c39e-6695f92f8b29",
+			"name": "{{domain}}/client/calls-history",
+			"description": "polucheniye istorii vizovov, trebuyetsya tol'ko token",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"helperAttributes": {},
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/client/calls/history",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
+		},
+		{
+			"id": "21a768b9-f2da-03c0-e530-adb6823ac856",
+			"name": "prinyatiye vizova so storoni sotrudnika",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"helperAttributes": {},
+			"headers": "",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "call_id",
+					"value": "6",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/employe/call/employed",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
+		},
+		{
+			"id": "2cd72fd5-a5a2-651e-1311-1be9c6c8d54a",
+			"name": "{{domain}}/employe/get-user",
+			"description": "etot metod otvechayen za polucheniya usera (mastera ili specialista). v otvete vozvrashayetsya vsya informatsiya ob usere i token",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"helperAttributes": {},
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/employe/get-user",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
+		},
+		{
+			"id": "30edb8ba-ed39-b848-c179-a0b60f766ca3",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nActive-Locale: ru\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Active-Locale",
+					"value": "ru",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{domain}}/client/register",
+			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "Sasha Doniyorovich",
+					"type": "text"
+				},
+				{
+					"key": "surname",
+					"value": "Raimov",
+					"type": "text"
+				},
+				{
+					"key": "phone",
+					"value": "+998901234567",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "123!@#",
+					"type": "text"
+				},
+				{
+					"key": "password_confirmation",
+					"value": "123!@#",
+					"type": "text"
+				},
+				{
+					"key": "email",
+					"value": "testmail@test.mail",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1574677167949,
+			"name": "{{domain}}/client/register",
+			"description": "tut idyot registraciya pol'zovateley, nujno peredavat' \nname => imya pol'zovatelya, \nsurname => familiya pol'zovatelya, \nphone => telefon pol'zovatelya, \npassword => parol', \npassword_confirmation => povtor parol'ya,\nvse polya obyazatel'ni!\n\t\n\tvozvrashayetsya user, u nego yest pole \n\nis_activated => false,\n\n\tsleduyushego metoda poka net no skoro dobavim,\n\tetot metod verifikatsii, v sms prishedsheye po telefonu budet ukazan kod verifikatsii, razrabotchik prejde chem pristupish za eto delo svyajis so mnoy)))",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"responses": []
+		},
+		{
+			"id": "320c140d-cd84-f056-05b6-47d46deafce0",
+			"name": "{{domain}}/employe/locations/get/23",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"helperAttributes": {},
+			"headers": "Accept-Locale: en\nActive-Locale: ru",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/employe/locations/get/23",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Accept-Locale",
+					"value": "en",
+					"type": "text"
+				},
+				{
+					"key": "Active-Locale",
+					"value": "ru",
+					"type": "text"
+				}
+			],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
+		},
+		{
+			"id": "3701d297-0e03-d5fc-f9e7-3058c1772f50",
+			"name": "{{domain}}/client/get-user",
+			"description": "polucheniye dannix o pol'zovatele, trebuyetsya tol'ko token.",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"helperAttributes": {},
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/client/get-user",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
+		},
+		{
+			"id": "5b593591-d044-7f72-2d5b-26ec33f28a0e",
+			"name": "{{domain}}/invalidate?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU0LCJpc3MiOiJodHRwOi8vZHRwLml0bWFrZXIudXovYXBpL3JlZnJlc2giLCJpYXQiOjE1NzM1Njc1MjksImV4cCI6MTU3MzU3MjA2NCwibmJmIjoxNTczNTY4NDY0LCJqdGkiOiI2bzBZVE8xd3pHN3ZoRXNaIn0.v-9G1T99jVDQLnWU5GAoRCmo_86tjd_a75uHFwqEy6I",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"helperAttributes": {},
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/invalidate?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU0LCJpc3MiOiJodHRwOi8vZHRwLml0bWFrZXIudXovYXBpL3JlZnJlc2giLCJpYXQiOjE1NzM1Njc1MjksImV4cCI6MTU3MzU3MjA2NCwibmJmIjoxNTczNTY4NDY0LCJqdGkiOiI2bzBZVE8xd3pHN3ZoRXNaIn0.v-9G1T99jVDQLnWU5GAoRCmo_86tjd_a75uHFwqEy6I",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "token",
+					"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU0LCJpc3MiOiJodHRwOi8vZHRwLml0bWFrZXIudXovYXBpL3JlZnJlc2giLCJpYXQiOjE1NzM1Njc1MjksImV4cCI6MTU3MzU3MjA2NCwibmJmIjoxNTczNTY4NDY0LCJqdGkiOiI2bzBZVE8xd3pHN3ZoRXNaIn0.v-9G1T99jVDQLnWU5GAoRCmo_86tjd_a75uHFwqEy6I"
+				}
+			],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+		},
+		{
+			"id": "6e066e9d-f190-4881-4dc1-661645f7001f",
+			"name": "register masters",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"headers": "",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "Sasha",
+					"type": "text"
+				},
+				{
+					"key": "surname",
+					"value": "Raimov",
+					"type": "text"
+				},
+				{
+					"key": "phone",
+					"value": "+998900001126",
+					"type": "text"
+				},
+				{
+					"key": "email",
+					"value": "sasha@sas.ha",
+					"type": "text"
+				},
+				{
+					"key": "groups[]",
+					"value": "5",
+					"type": "text"
+				},
+				{
+					"key": "groups[]",
+					"value": "6",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "123123",
+					"type": "text"
+				},
+				{
+					"key": "password_confirmation",
+					"value": "123123",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/master/register?=",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "",
+					"value": ""
+				}
+			],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "0669b24a-5a76-ba51-8760-83deb764ad1b"
+		},
+		{
+			"id": "9baa191f-c903-f9b1-4d41-74447b3b0090",
+			"name": "{{domain}}/master/login",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"headers": "",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "login",
+					"value": "+998900001126",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "123123",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/master/login",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "0669b24a-5a76-ba51-8760-83deb764ad1b"
+		},
+		{
+			"id": "b2ad242f-8eaa-c969-69f2-ce31d29581e8",
+			"name": "{{domain}}/client/last-call",
+			"description": "posledniy vizov, trebuyetsya token\n",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"helperAttributes": {},
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/client/last-call",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
+		},
+		{
+			"id": "bbbca5c7-4107-b8ca-dff1-239a056db46d",
+			"name": "Polucheniye standartnix dannix pri vxode v prilojeniye",
+			"description": "zravstvuy razrabotchik, etim metodom mojesh proverit' rabotayetli danniye API.\n\nyesli chto to ne tak mojesh somnoy svyazatsya cherez:\n\ntelegram => @webmasterSasha\ntel \t => +998903297989\nfacebook => https://www.facebook.com/webmasterSasha",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"headers": "Active-Locale: uz",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/index",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Active-Locale",
+					"value": "uz",
+					"type": "text"
+				}
+			],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+		},
+		{
+			"id": "c09f541f-54b7-dc32-f05b-955805d587c6",
+			"name": "{{domain}}/client/login",
+			"description": "tut peredayem vsego 2 parametra:\n{\n\tlogin: '+998903297989'//nomer telefona\n\tpassword: 'asd2e412asd'//parol' polzovatelya\n}\n\ndalee v otvete poluchayem token usera i samogo usera,\nvo vsex drugix metodax token obyazatelen, on ustarevayet za 1 chas, kogda prilojeniye ne aktivno mojesh so starim tokenom popitatsya poluchit' usera cheres url .../get-user, yesli vidayetsya oshibka kiday pol'zovatelya na stranicu vxoda",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "POST",
+			"headers": "",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "login",
+					"value": "+998901234567",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "123!@#",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "{{domain}}/client/login",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
+		},
+		{
+			"id": "d92c5d59-8af2-6ed4-bc19-17f32f171774",
+			"name": "{{domain}}/get-user-groups",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/get-user-groups",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+		},
+		{
+			"id": "e0090636-daa2-15c4-fa77-8d06ac620ec4",
+			"name": "{{domain}}/employe/calls/active",
+			"description": "s etim metodom mojno poluchit vse activniye zadachi za kotorix mojet vzyatsya sotrudnik(master ili specialist), sortirovka idyet po user->user_role",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"helperAttributes": {},
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/employe/calls/active/2",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
+		},
+		{
+			"id": "f7b10c09-20f3-c84a-c310-21ffc4dd876d",
+			"name": "get call to id",
+			"description": "",
+			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"method": "GET",
+			"helperAttributes": {},
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{domain}}/client/call/8",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
+			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
+		}
+	]
+}
