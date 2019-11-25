@@ -1,4 +1,4 @@
-<?php namespace Itmaker\DtpApp\Controllers;
+<?php namespace Itmaker\DtpApp\Api;
 
 use Lang;
 use Input;
@@ -10,7 +10,7 @@ use RainLab\User\Models\User as UserModel;
 use RainLab\User\Models\UserGroup as UserGroupModel;
 use Itmaker\DtpApp\Resources\UserResource;
 
-class UsersApi extends Controller
+class Users extends Controller
 {
     private $messages = [];
 

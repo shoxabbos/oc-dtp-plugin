@@ -1,4 +1,4 @@
-<?php namespace Itmaker\DtpApp\Controllers;
+<?php namespace Itmaker\DtpApp\Api;
 
 use Lang;
 use Input;
