@@ -4,6 +4,7 @@ use Lang;
 use Input;
 use JWTAuth;
 use Validator;
+use ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use RainLab\User\Models\User as UserModel;
@@ -163,7 +164,12 @@ class Users extends Controller
 
     public function loginSpecialist()
     {
-        $token = $this->getToken();
+        try {
+            $token = $this->getToken();
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+
         $userModel = JWTAuth::authenticate($token);
         if ($userModel->methodExists('getAuthApiSigninAttributes')) {
             $user = $userModel->getAuthApiSigninAttributes();
@@ -214,27 +220,29 @@ class Users extends Controller
             'login' => 'required|exists:users,username',
             'password' => 'required'
         ];
+
         $validation = Validator::make($data, $rules, $this->messages);
+        
         if ($validation->fails()){
-            return response()->json(['errors' => $validation->errors()], 401);
+            throw new ValidationException($validation);
         }
+
         $credentials = [
             'username' => $data['login'],
             'password' => $data['password']
         ];
+
         try {
             // verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json([
-                    'error' => [
-                        'password' => Lang::get('itmaker.dtpapp::lang.messages.password.wrong')
-                    ]
-                ], 401);
+                throw new ValidationException(['error' => [
+                    'password' => Lang::get('itmaker.dtpapp::lang.messages.password.wrong')
+                ]]);
             }
         } catch (JWTException $e) {
-            // something went wrong
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            throw new ValidationException(['error' => 'could_not_create_token']);
         }
+
 
         return $token;
     }
