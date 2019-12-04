@@ -86,7 +86,7 @@ class Users extends Controller
             'surname'   => 'required|min:3',
             'phone'     => 'required|unique:users,username',
             'password'  => 'required|min:6|confirmed',
-            'email'     => 'required|min:3|email',
+            'email'     => 'required|min:3|email|unique:users,email',
             'groups'    => 'required|array'
         ];
 
@@ -164,10 +164,34 @@ class Users extends Controller
 
     public function loginSpecialist()
     {
+        $data = Input::only('login', 'password');
+        $rules = [
+            'login' => 'required|exists:users,username',
+            'password' => 'required'
+        ];
+
+        $this->getMessages();
+
+        $validation = Validator::make($data, $rules, $this->messages);
+
+        if ($validation->fails()){
+            throw new ValidationException($validation);
+        }
+
+        $credentials = [
+            'username' => $data['login'],
+            'password' => $data['password']
+        ];
+
         try {
-            $token = $this->getToken();
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            // verify the credentials and create a token for the user
+            if (! $token = JWTAuth::attempt($credentials)) {
+                throw new ValidationException(['error' => [
+                    'password' => Lang::get('itmaker.dtpapp::lang.messages.password.wrong')
+                ]]);
+            }
+        } catch (JWTException $e) {
+            throw new ValidationException(['error' => 'could_not_create_token']);
         }
 
         $userModel = JWTAuth::authenticate($token);
@@ -192,7 +216,36 @@ class Users extends Controller
 
     public function loginMaster()
     {
-        $token = $this->getToken();
+        $data = Input::only('login', 'password');
+        $rules = [
+            'login' => 'required|exists:users,username',
+            'password' => 'required'
+        ];
+
+        $this->getMessages();
+
+        $validation = Validator::make($data, $rules, $this->messages);
+
+        if ($validation->fails()){
+            return response()->json(['errors' => $validation->errors()], 401);
+        }
+
+        $credentials = [
+            'username' => $data['login'],
+            'password' => $data['password']
+        ];
+
+        try {
+            // verify the credentials and create a token for the user
+            if (! $token = JWTAuth::attempt($credentials)) {
+                throw new ValidationException(['error' => [
+                    'password' => Lang::get('itmaker.dtpapp::lang.messages.password.wrong')
+                ]]);
+            }
+        } catch (JWTException $e) {
+            throw new ValidationException(['error' => 'could_not_create_token']);
+        }
+
         $userModel = JWTAuth::authenticate($token);
         if ($userModel->methodExists('getAuthApiSigninAttributes')) {
             $user = $userModel->getAuthApiSigninAttributes();
@@ -213,40 +266,6 @@ class Users extends Controller
         return response()->json(compact('token', 'user'));
     }
 
-    private function getToken()
-    {
-        $data = Input::only('login', 'password');
-        $rules = [
-            'login' => 'required|exists:users,username',
-            'password' => 'required'
-        ];
-
-        $validation = Validator::make($data, $rules, $this->messages);
-        
-        if ($validation->fails()){
-            throw new ValidationException($validation);
-        }
-
-        $credentials = [
-            'username' => $data['login'],
-            'password' => $data['password']
-        ];
-
-        try {
-            // verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
-                throw new ValidationException(['error' => [
-                    'password' => Lang::get('itmaker.dtpapp::lang.messages.password.wrong')
-                ]]);
-            }
-        } catch (JWTException $e) {
-            throw new ValidationException(['error' => 'could_not_create_token']);
-        }
-
-
-        return $token;
-    }
-
     public function getUser()
     {
         $user = $this->auth();
@@ -260,12 +279,13 @@ class Users extends Controller
 
         $data = Input::only('username', 'name', 'surname', 'password', 'password_confirmation', 'email');
 
+
         if (Input::hasFile('avatar')) {
             $user->avatar = Input::file('avatar');
         }
 
         try {
-            $user->fill(post());
+            $user->fill($data);
             $user->save();
             return new UserResource($user);
         } catch (\Exception $e) {

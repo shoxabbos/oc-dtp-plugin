@@ -5,6 +5,7 @@ use Yaml;
 use System\Classes\PluginBase;
 use \Illuminate\Foundation\AliasLoader;
 use Rainlab\User\Models\User as UserModel;
+use Rainlab\User\Controllers\Users as UsersController;
 use Rainlab\User\Models\UserGroup as UserGroupModel;
 use Rainlab\User\Models\Settings as UserSettings;
 use Itmaker\DtpApp\Models\Call as CallModel;
@@ -75,6 +76,28 @@ class Plugin extends PluginBase
                 $form->addTabFields($fields);
             }
 
+        });
+
+        UsersController::extendFormFields(function ($form, $model, $context) {
+            if (!$model instanceof UserModel) {
+                return;
+            }
+
+            $group = $model->groups()->whereNotIn('code', ['clients', 'specialists'])->first();
+
+            if (!$group) {
+                return;
+            }
+
+            $fields = [
+                'balance' => [
+                    'type' => 'number',
+                    'label' => 'balance',
+                    'span' => 'auto',
+                    'tab' => 'rainlab.user::lang.user.account'
+                ]
+            ];
+            $form->addTabFields($fields);
         });
     }
 
