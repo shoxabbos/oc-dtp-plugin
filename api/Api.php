@@ -25,7 +25,7 @@ class Api extends Controller
     public function index()
     {
         $services = ServiceModel::where('parent_id', null)->with('childrens', 'childrens.childrens', 'icon', 'childrens.icon')->get();
-        $tarifs = Tarif::get();
+        $tarifs = Tarif::with('image')->get();
         return response()->json(compact('services', 'tarifs'));
     }
 
@@ -133,6 +133,18 @@ class Api extends Controller
         return response()->json(compact('call'));
     }
 
+    public function getCallToId($id)
+    {
+        $call = Call::find($id);
+
+        if (!$call){
+            return response()->json([ 'errors' => [ 'call' => 'call not found'] ], 404);
+        }
+        $call->load('images', 'status', 'client', 'employe', 'employe_group', 'services');
+        return response()->json(compact('call'));
+
+    }
+
     public function activeCalls($page = 1)
     {
 
@@ -163,11 +175,13 @@ class Api extends Controller
     	return response()->json(compact('calls'));
     }
 
-    public function mySpents()
+    public function mySpents($status)
     {
     	$user = $this->auth();
 
-    	$calls = $user->employe_calls;
+    	$calls = $user->with('images', 'status', 'services', 'client', 'employe')->employe_calls()->whereHas('status', function ($q) use ($status) {
+    	    $q->where('code', $status);
+        })->get();
 
     	if (!$calls){
     		return response()->json('calls not found');
@@ -176,7 +190,7 @@ class Api extends Controller
     	return response()->json(compact('calls'));
     }
 
-    public function callEmployed()
+    public function callEmployed($id)
     {
         $user = $this->auth();
 
@@ -189,20 +203,34 @@ class Api extends Controller
             'employe_group')
             ->whereHas('status', function ($q) {
                 $q->where('code', 'approved');
-            })->find(post('call_id'));
+            })->find($id);
 
         if (!$call){
-            return response()->json('call not found or was accepted', 404);
+            return response()->json(['errors' => [
+                'call' => 'call not found or was accepted'
+            ]], 404);
         }
 
         if($call->employe){
-            return response()->json('the call was accepted by another employee', 201);
+            return response()->json([ 'errors' => [
+                'call' => 'the call was accepted by another employee'
+            ]], 201);
         }
 
         $activeStatus = StatusModel::where('code', 'active')->first();
 
+
+        if ($user->groups()->where('code', 'specialists')->first()) {
+            $call->employe = $user;
+            $call->status = $activeStatus;
+            $call->update();
+            return response()->json(compact('status', 'call'));
+        }
+
         if ($user->balance < 10000){
-            //return response()->json('insufficient funds in the account');
+            return response()->json([ 'errors' => [
+                    'balance' => 'insufficient funds in the account'
+                ]], 400);
         }
 
         $user->balance = $user->balance - 10000;
@@ -217,20 +245,57 @@ class Api extends Controller
         return response()->json(compact('status', 'call'));
     }
 
-    public function callComplated()
+    public function callArrived($id)
+    {
+        $user = $this->auth();
+
+        $call = Call::with(
+            'employe',
+            'client',
+            'status',
+            'images',
+            'services',
+            'employe_group')
+            ->whereHas('status', function ($q) {
+                $q->where('code', 'active');
+            })->find($id);
+
+        if (!$call){
+            return response()->json(['errors' => [
+                'call' => 'call not found or was accepted'
+            ]], 404);
+        }
+
+        if($call->employe->id != $user->id){
+            return response()->json(['errors' => [
+                'call' => 'the call was accepted by another employee'
+            ]], 201);
+        }
+
+        $arrivedStatus = StatusModel::where('code', 'arrived')->first();
+
+        $call->status = $arrivedStatus;
+        $call->update();
+
+        $status = 'arrived at destination';
+
+        return response()->json(compact('status', 'call'));
+    }
+
+    public function callCompleted()
     {
     	$user = $this->auth();
 
     	$id = post('call_id');
 
-    	$call = $user->employe_calls()->with(
+    	$call = $user->calls()->with(
             'images', 
             'status', 
             'client', 
             'employe', 
             'employe_group', 
             'services')->whereHas('status', function ($q) {
-                $q->where('code', 'active');
+                $q->where('code', 'arrived');
             })->find($id);
 
     	if (!$call){
@@ -238,7 +303,6 @@ class Api extends Controller
     	}
 
         $complatedStatus = StatusModel::where('code', 'completed')->first();
-
     	$call->status = $complatedStatus;
     	$call->save();
 

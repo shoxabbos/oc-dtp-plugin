@@ -17,3 +17,12 @@ fields:
         label: 'itmaker.dtpapp::lang.tarifs.amount'
         span: auto
         type: text
+    image:
+        label: 'itmaker.dtpapp::lang.tarifs.image'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

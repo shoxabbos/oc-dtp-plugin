@@ -1,5 +1,6 @@
 <?php namespace Itmaker\DtpApp\Models;
 
+use App;
 use Model;
 
 /**
@@ -28,4 +29,10 @@ class EmployeesLocation extends Model
     public $belongsTo = [
         'user' => \Rainlab\User\Models\User::class
     ];
+    
+    public function beforeSave()
+    {
+        $pusher = App::make('pusher');
+        $pusher->trigger('locations', "get-{$this->user->id}", $this);
+    }
 }

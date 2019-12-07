@@ -66,9 +66,9 @@ class Call extends Model
     public function beforeSave()
     {
         if (!empty($this->status)) {
-            if ($this->status->code == 'approved'){
+            if ($this->status->code){
                 $pusher = App::make('pusher');
-                $pusher->trigger('call', 'new-call', $this);
+                $pusher->trigger('call-status', "call-{$this->id}", $this);
             }
         }
     }

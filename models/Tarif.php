@@ -45,7 +45,9 @@ class Tarif extends Model
         'employe_group' => [ \Rainlab\User\Models\UserGroup::class, 'key' => 'employe_group_code', 'otherKey' => 'code']
     ];
 
-
+    public $attachOne = [
+        'image' => \System\Models\File::class,    
+    ];
 
     public function getEmployeGroupCodeOptions()
     {

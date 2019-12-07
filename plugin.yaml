@@ -56,3 +56,7 @@ navigation:
                 icon: icon-sliders
                 permissions:
                     - manage_slides
+            locations:
+                label: locations
+                url: itmaker/dtpapp/employeeslocations
+                icon: icon-sitemap
