@@ -21,7 +21,7 @@ Route::group([
     Route::post('/master/login', 'itmaker\dtpapp\api\Users@loginMaster');
 	Route::get('/get-master-groups', 'itmaker\dtpapp\api\Users@getGroups');
 });
-
+ 
 Route::group([
 	'prefix' => 'api/client',
 	'middleware' => ['\Tymon\JWTAuth\Middleware\GetUserFromToken', '\Itmaker\DtpApp\Classes\LocaleMiddleware']
@@ -42,7 +42,9 @@ Route::group([
 	Route::get('/get-user', 'itmaker\dtpapp\api\Api@getUser');
 	Route::post('/update-user', 'itmaker\dtpapp\api\Users@updateUser');
 	Route::get('/calls/active/{page?}', 'itmaker\dtpapp\api\Api@activeCalls');
+	
 	Route::get('/calls/spents/{status}', 'itmaker\dtpapp\api\Api@mySpents');
+
     Route::get('/call/get/{id}', 'itmaker\dtpapp\api\Api@getCallToId');
     Route::get('/call/employed/{id}', 'itmaker\dtpapp\api\Api@callEmployed');
     Route::get('/call/arrived/{id}', 'itmaker\dtpapp\api\Api@callArrived');

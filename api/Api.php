@@ -179,9 +179,9 @@ class Api extends Controller
     {
     	$user = $this->auth();
 
-    	$calls = $user->with('images', 'status', 'services', 'client', 'employe')->employe_calls()->whereHas('status', function ($q) use ($status) {
+    	$calls = $user->employe_calls()->whereHas('status', function ($q) use ($status) {
     	    $q->where('code', $status);
-        })->get();
+        })->with('images', 'status', 'services', 'client', 'employe')->get();
 
     	if (!$calls){
     		return response()->json('calls not found');

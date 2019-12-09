@@ -68,7 +68,7 @@ class Call extends Model
         if (!empty($this->status)) {
             if ($this->status->code){
                 $pusher = App::make('pusher');
-                $pusher->trigger('call-status', "call-{$this->id}", $this);
+                $pusher->trigger('call-status', "call-{$this->id}", $this->load('employe', 'status'));
             }
         }
     }
