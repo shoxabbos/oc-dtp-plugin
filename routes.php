@@ -29,10 +29,12 @@ Route::group([
 	Route::get('/get-user', 'itmaker\dtpapp\api\Users@getUser');
 	Route::post('/update-user', 'itmaker\dtpapp\api\Users@updateUser');
 	Route::post('/calling', 'itmaker\dtpapp\api\Api@calling');
+	Route::post('/cancel-call', 'itmaker\dtpapp\api\Api@cancelCall');
 	Route::get('/calls/history/{page}', 'itmaker\dtpapp\api\Api@callsHistory');
 	Route::get('/calls/get/{id}', 'itmaker\dtpapp\api\Api@getCall');
 	Route::get('last-call', 'itmaker\dtpapp\api\Api@getLastCall');
 	Route::post('/call/completed', 'itmaker\dtpapp\api\Api@callCompleted');
+	Route::post('create-rate', 'itmaker\dtpapp\api\Rates@createRate');
 });
 
 Route::group([

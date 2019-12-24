@@ -20,6 +20,7 @@ columns:
     client:
         label: 'itmaker.dtpapp::lang.calls.client'
         type: text
+        searchable: true
         select: 'concat(name, '' '',surname)'
         relation: client
     employe:

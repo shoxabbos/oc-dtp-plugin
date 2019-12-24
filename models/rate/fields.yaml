@@ -1,0 +1,22 @@
+fields:
+    employe:
+        label: Сотрудник
+        nameFrom: name
+        descriptionFrom: surname
+        span: auto
+        type: relation
+    user:
+        label: 'itmaker.dtpapp::lang.calls.client'
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    rainting:
+        label: Отзыв(0-5)
+        span: auto
+        type: number
+    created_at:
+        label: 'Дата и время'
+        mode: datetime
+        span: auto
+        type: datepicker

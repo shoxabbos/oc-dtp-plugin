@@ -50,6 +50,9 @@ class Api extends Controller
             'address',
             'images'
         );
+        
+        // ulug`bek yesli zaxochish chtob etot metod sozdoval vizov to tebe nado prosto zakomentirovat' retrun
+        //return response()->json($data);
 
     	$rules = [
     		'services'            => 'array',
@@ -83,6 +86,21 @@ class Api extends Controller
                         ->with('services', 'employe', 'client', 'employe_group', 'images', 'status')->first();
 
     	return response()->json(compact('call'));
+    }
+    
+    public function cancelCall()
+    {
+        $user = $this->auth();
+        
+        $statusId = StatusModel::where('is_active', true)->orderBy('sort_order', 'asc')->first()->id;
+        
+        $call = $user->calls()->where('status_id', $statusId)->orderByDesc('id')->first();
+        if ($call) {
+            $call->delete();
+            return response()->json(['status' => Lang::get('itmaker.dtpapp::lang.messages.success_cancel')]);
+        } else {
+            return response()->json(['status' => Lang::get('itmaker.dtpapp::lang.messages.not_found')]);
+        }
     }
 
     public function getLastCall()

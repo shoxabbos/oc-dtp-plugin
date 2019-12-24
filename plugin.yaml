@@ -20,6 +20,9 @@ permissions:
     manage_slides:
         tab: 'itmaker.dtpapp::lang.plugin.name'
         label: 'itmaker.dtpapp::lang.permissions.manage_slides'
+    manage_rates:
+        tab: 'itmaker.dtpapp::lang.plugin.name'
+        label: 'itmaker.dtpapp::lang.permissions.manage_rates'
 navigation:
     calls:
         label: 'itmaker.dtpapp::lang.menu.calls'
@@ -60,3 +63,9 @@ navigation:
                 label: locations
                 url: itmaker/dtpapp/employeeslocations
                 icon: icon-sitemap
+            rates:
+                label: 'itmaker.dtpapp::lang.menu.rates'
+                url: itmaker/dtpapp/rates
+                icon: icon-sitemap
+                permissions:
+                    - manage_rates

@@ -36,3 +36,9 @@
 1.0.14:
     - 'Updated table itmaker_dtpapp_services'
     - builder_table_update_itmaker_dtpapp_services2.php
+1.0.15:
+    - 'Created table itmaker_dtpapp_rates'
+    - builder_table_create_itmaker_dtpapp_rates.php
+1.0.16:
+    - 'Updated table itmaker_dtpapp_rates'
+    - builder_table_update_itmaker_dtpapp_rates.php
