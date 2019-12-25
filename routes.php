@@ -1,5 +1,45 @@
 <?php
 
+
+// public methods
+Route::group([
+    'prefix' => 'api', 
+    'middleware' => 'Itmaker\DtpApp\Middlewares\LanguageDetector'
+], function() {
+    // auth
+    Route::post('auth/signin', 'Itmaker\DtpApp\Api\Auth@signin');
+    Route::post('auth/signup', 'Itmaker\DtpApp\Api\Auth@signup');
+    
+    Route::post('auth/refresh-token', 'Itmaker\DtpApp\Api\Auth@refresh');
+    Route::post('auth/invalidate-token', 'Itmaker\DtpApp\Api\Auth@invalidate');
+
+    Route::post('auth/restore-password', 'Itmaker\DtpApp\Api\Auth@restorePassword'); // step 1
+    Route::post('auth/reset-password', 'Itmaker\DtpApp\Api\Auth@resetPassword'); // step 2
+});
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // index route for clients app
 Route::group([
 	'prefix' => 'api', 
@@ -21,7 +61,7 @@ Route::group([
     Route::post('/master/login', 'itmaker\dtpapp\api\Users@loginMaster');
 	Route::get('/get-master-groups', 'itmaker\dtpapp\api\Users@getGroups');
 });
- 
+  
 Route::group([
 	'prefix' => 'api/client',
 	'middleware' => ['\Tymon\JWTAuth\Middleware\GetUserFromToken', '\Itmaker\DtpApp\Classes\LocaleMiddleware']

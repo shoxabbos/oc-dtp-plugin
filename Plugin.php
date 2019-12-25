@@ -83,20 +83,26 @@ class Plugin extends PluginBase
                 return;
             }
 
-            $group = $model->groups()->whereNotIn('code', ['clients', 'specialists'])->first();
-
-            if (!$group) {
-                return;
-            }
-
             $fields = [
                 'balance' => [
                     'type' => 'number',
-                    'label' => 'balance',
+                    'label' => 'Balance',
                     'span' => 'auto',
-                    'tab' => 'rainlab.user::lang.user.account'
+                    'tab' => 'DTP fields'
+                ],
+                'type' => [
+                    'type' => 'dropdown',
+                    'label' => 'Type',
+                    'span' => 'auto',
+                    'tab' => 'DTP fields',
+                    'options' => [
+                        'client' => 'Client',
+                        'master' => 'Master',
+                        'specialists' => 'Specialists',
+                    ]
                 ]
             ];
+
             $form->addTabFields($fields);
         });
     }
