@@ -106,9 +106,11 @@ class Auth extends Controller
         }
 
         $userModel = JWTAuth::authenticate($token);
+        $userModel = UserModel::find($userModel->id);
+
 
         return [
-            'user' => $userModel,
+            'user' => new UserResource($userModel),
             'token' => $token,
             'success' => 'Добро пожаловать, '.$userModel->name
         ];
@@ -141,7 +143,7 @@ class Auth extends Controller
         }
 
         return [
-            'user' => $user,
+            'user' => new UserResource($userModel),
             'token' => $token,
             "success" => 'Регистрация успешно прошла'
         ];

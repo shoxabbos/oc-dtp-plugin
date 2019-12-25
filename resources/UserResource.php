@@ -9,21 +9,11 @@ class UserResource extends Resource
 {
 	public function toArray($request)
 	{
-		$data = [
-		    'id' => $this->id,
-		    'name' => $this->name,
-            'surname' => $this->surname,
-            'username' => $this->username,
-            'is_active' => $this->is_active,
-            'email' => $this->email,
-            'avatar' => $this->avatar,
-            'groups' => $this->groups
-        ];
+		$data = parent::toArray($request);
 
-		$group = $this->groups()->whereNotIn('code', ['clients', 'specialists'])->first();
-		if ($group) {
-            $data['balance'] = $this->balance;
-        }
+		if ($this->avatar) {
+			$data['image'] = $this->avatar->getThumb(250, 250, ['mode' => 'crop']);
+		}
 
 		return $data;
 	}

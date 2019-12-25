@@ -18,7 +18,18 @@ Route::group([
 });
  
 
+// private methods of user
+Route::group([
+    'prefix' => 'api/user',
+    'middleware' => [
+    	'\Tymon\JWTAuth\Middleware\GetUserFromToken',
+        'Itmaker\DtpApp\Middlewares\LanguageDetector',
+    ]
+], function() {
+    Route::get('get', 'Itmaker\DtpApp\Api\User@get');
+    Route::post('update', 'Itmaker\DtpApp\Api\User@update');
 
+});
 
 
 
