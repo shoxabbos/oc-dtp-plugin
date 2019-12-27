@@ -110,7 +110,7 @@ class Auth extends Controller
 
 
         return [
-            'user' => new UserResource($userModel),
+            'data' => new UserResource($userModel),
             'token' => $token,
             'success' => 'Добро пожаловать, '.$userModel->name
         ];
@@ -124,7 +124,7 @@ class Auth extends Controller
             'surname'   => 'required|min:3',
             'username'     => 'required|unique:users,username',
             'password'  => 'required|min:6|confirmed',
-            'email'     => 'required|min:3|email'
+            'email'     => 'required|min:3|email|unique:users,email'
         ];
 
         $validation = Validator::make($credentials, $rules);
@@ -143,7 +143,7 @@ class Auth extends Controller
         }
 
         return [
-            'user' => new UserResource($userModel),
+            'data' => new UserResource($userModel),
             'token' => $token,
             "success" => 'Регистрация успешно прошла'
         ];
@@ -169,7 +169,7 @@ class Auth extends Controller
 
         // if no errors are encountered we can return a new JWT
         return [
-            'token' => $token,
+            'data' => $token,
             'user' => $user,
             "success" => 'Токен был обновлен'
         ];

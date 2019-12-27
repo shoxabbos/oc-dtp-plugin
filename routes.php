@@ -15,6 +15,9 @@ Route::group([
 
     Route::post('auth/restore-password', 'Itmaker\DtpApp\Api\Auth@restorePassword'); // step 1
     Route::post('auth/reset-password', 'Itmaker\DtpApp\Api\Auth@resetPassword'); // step 2
+
+    // Helper
+	Route::get('helper/tariffs', 'Itmaker\DtpApp\Api\Helper@tariffs');    
 });
  
 
