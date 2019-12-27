@@ -143,7 +143,7 @@ class Auth extends Controller
         }
 
         return [
-            'data' => new UserResource($userModel),
+            'data' => new UserResource($user),
             'token' => $token,
             "success" => 'Регистрация успешно прошла'
         ];
