@@ -1,24 +1,24 @@
 fields:
+    type:
+        label: 'Тип вызова'
+        showSearch: true
+        span: auto
+        type: dropdown
     status:
         label: 'itmaker.dtpapp::lang.calls.status'
         showSearch: true
         span: auto
         type: dropdown
+    comment:
+        label: 'itmaker.dtpapp::lang.calls.addantial_comment'
+        size: ''
+        span: auto
+        type: textarea
     created_at:
         label: 'itmaker.dtpapp::lang.calls.created_at'
         mode: datetime
         span: auto
         type: datepicker
-    addantial_comment:
-        label: 'itmaker.dtpapp::lang.calls.addantial_comment'
-        size: ''
-        span: auto
-        type: textarea
-    employe_group:
-        label: 'itmaker.dtpapp::lang.calls.employe_group_code'
-        showSearch: true
-        span: auto
-        type: dropdown
 tabs:
     fields:
         coor_lat:
@@ -57,10 +57,4 @@ tabs:
                 extension: auto
             span: auto
             type: fileupload
-            tab: 'itmaker.dtpapp::lang.calls.params'
-        updated_at@update:
-            label: 'itmaker.dtpapp::lang.calls.updated_at'
-            type: datepicker
-            span: auto
-            disabled: true
             tab: 'itmaker.dtpapp::lang.calls.params'

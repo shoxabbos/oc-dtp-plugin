@@ -22,18 +22,22 @@ Route::group([
 });
  
 
-// private methods of user
 Route::group([
-    'prefix' => 'api/user',
+    'prefix' => 'api',
     'middleware' => [
     	'\Tymon\JWTAuth\Middleware\GetUserFromToken',
         'Itmaker\DtpApp\Middlewares\LanguageDetector',
     ]
 ], function() {
-    Route::get('get', 'Itmaker\DtpApp\Api\User@get');
-    Route::post('update', 'Itmaker\DtpApp\Api\User@update');
+	// private methods of user
+    Route::get('user/get', 'Itmaker\DtpApp\Api\User@get');
+    Route::post('user/update', 'Itmaker\DtpApp\Api\User@update');
 
+
+    // private methods of call
+    Route::post('calls', 'Itmaker\DtpApp\Api\Calls@create');
 });
+
 
 
 

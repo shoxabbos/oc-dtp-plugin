@@ -14,9 +14,6 @@ permissions:
     manage_services:
         tab: 'itmaker.dtpapp::lang.plugin.name'
         label: 'itmaker.dtpapp::lang.permissions.manage_services'
-    manage_statuses:
-        tab: 'itmaker.dtpapp::lang.plugin.name'
-        label: 'itmaker.dtpapp::lang.permissions.manage_statuses'
     manage_slides:
         tab: 'itmaker.dtpapp::lang.plugin.name'
         label: 'itmaker.dtpapp::lang.permissions.manage_slides'
@@ -47,12 +44,6 @@ navigation:
                 icon: icon-slack
                 permissions:
                     - manage_services
-            statuses:
-                label: 'itmaker.dtpapp::lang.menu.statuses'
-                url: itmaker/dtpapp/statuses
-                icon: icon-signal
-                permissions:
-                    - manage_statuses
             slides:
                 label: 'itmaker.dtpapp::lang.menu.slides'
                 url: itmaker/dtpapp/slides

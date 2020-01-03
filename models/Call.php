@@ -29,7 +29,6 @@ class Call extends Model
     public $belongsTo = [
         'client' => 'Rainlab\User\Models\User',
         'employe' => 'Rainlab\User\Models\User',
-        'status' => Status::class,
         'employe_group' => ['Rainlab\User\Models\UserGroup', 'key' => 'employe_group_code', 'otherKey' => 'code'],
     ];
 
@@ -43,33 +42,26 @@ class Call extends Model
     ];
 
     public $belongsToMany = [
-        'services' => [Service::class, 'table' => 'itmaker_dtpapp_call_service']
+        'services' => [Service::class, 'table' => 'itmaker_dtpapp_calls_services']
     ];
-
-    public function getStatusOptions()
-    {
-        return Status::where('is_active', true)
-                ->orderBy('sort_order', 'asc')->lists('name', 'id');
-    }
 
     /**
      * @return userGroup codes except clients
      */
-    public function getEmployeGroupOptions()
+    public function getTypeOptions()
     {
-        return UserGroup::where('code', '!=','clients')->lists('name', 'code');
+        return Service::TYPES;
     }
 
-    /**
-     * @method mixed called when save model
-     */
-    public function beforeSave()
-    {
-        if (!empty($this->status)) {
-            if ($this->status->code){
-                $pusher = App::make('pusher');
-                $pusher->trigger('call-status', "call-{$this->id}", $this->load('employe', 'status'));
-            }
-        }
+
+    public function getStatusOptions() {
+        return [
+            'new' => 'Новый',
+            'active' => 'Активный',
+            'approved' => 'Одобрен',
+            'arrived' => 'Сотрудник прибыл',
+            'completed' => 'Завершён',
+        ];
     }
+    
 }
