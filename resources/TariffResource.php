@@ -7,13 +7,10 @@ class TariffResource extends Resource
 {
 	public function toArray($request)
 	{
-		$data = [
-			'id' => $this->id,
-			'name' => $this->name,
-		];
+		$data = parent::toArray($request);
 
-		if ($this->icon) {
-			$data['icon'] = $this->icon->getThumb(250, 250, ['mode' => 'crop']);
+		if ($this->image) {
+			$data['image'] = $this->image->getThumb(250, 250, ['mode' => 'crop']);
 		}
 
 		return $data;

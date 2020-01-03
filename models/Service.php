@@ -21,6 +21,13 @@ class Service extends Model
     public $timestamps = false;
 
 
+    const TYPES = [
+        'crash' => 'Поломка',
+        'accident' => 'ДТП',
+        'tracker' => 'Эвакуатор',
+    ];
+
+
     /**
      * @var string The database table used by the model.
      */
@@ -48,11 +55,7 @@ class Service extends Model
     ];
 
     public function getTypeOptions() {
-        return [
-            'crash' => 'Поломка',
-            'accident' => 'ДТП',
-            'tracker' => 'Эвакуатор',
-        ];
+        return self::TYPES;
     }
 
 }

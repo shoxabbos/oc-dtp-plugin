@@ -22,9 +22,18 @@ class Helper extends Controller
 
 
     public function services() {
-        $collection = Service::with('icon')->get();
+    	$types = Service::TYPES;
+    	$type = Input::get('type');
 
-        return TariffResource::collection($collection);
+    	$query = Service::with('icon');
+
+    	if ($type && isset($types[$type])) {
+    		$query->where('type', $type);
+    	}
+
+        $collection = $query->get();
+
+        return ServiceResource::collection($collection);
     }
 
 }
