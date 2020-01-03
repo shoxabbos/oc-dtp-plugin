@@ -28,18 +28,14 @@ columns:
         type: text
         select: 'concat(name, '' '',surname)'
         relation: employe
-    employe_group:
-        label: 'itmaker.dtpapp::lang.calls.employe_group_code'
+    type:
+        label: 'Тип вызова'
         type: text
-        select: name
-        relation: employe_group
     status:
-        label: 'itmaker.dtpapp::lang.calls.status'
+        label: Статус
         type: text
         searchable: true
         sortable: true
-        select: name
-        relation: status
     addantial_comment:
         label: 'itmaker.dtpapp::lang.calls.addantial_comment'
         type: text

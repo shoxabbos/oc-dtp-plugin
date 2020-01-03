@@ -51,3 +51,18 @@
 1.0.19:
     - 'Updated table itmaker_dtpapp_services'
     - builder_table_update_itmaker_dtpapp_services_3.php
+1.0.20:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls_2.php
+1.0.21:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls_3.php
+1.0.22:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls_4.php
+1.0.23:
+    - 'Updated table itmaker_dtpapp_call_service'
+    - builder_table_update_itmaker_dtpapp_calls_services.php
+1.0.24:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls_5.php
