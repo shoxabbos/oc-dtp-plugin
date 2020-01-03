@@ -3,11 +3,6 @@ fields:
         label: 'itmaker.dtpapp::lang.services.name'
         span: auto
         type: text
-    employe_group_code:
-        label: 'itmaker.dtpapp::lang.services.employe_group_code'
-        showSearch: true
-        span: auto
-        type: dropdown
     icon:
         label: 'itmaker.dtpapp::lang.services.icon'
         mode: image
@@ -17,3 +12,8 @@ fields:
             extension: auto
         span: auto
         type: fileupload
+    type:
+        label: 'Тип услуги'
+        showSearch: true
+        span: auto
+        type: dropdown

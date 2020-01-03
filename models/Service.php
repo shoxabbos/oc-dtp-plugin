@@ -10,8 +10,9 @@ use Rainlab\User\Models\UserGroup;
 class Service extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    use \October\Rain\Database\Traits\NestedTree;
-    //use \October\Rain\Database\Traits\Sortable;
+    use \October\Rain\Database\Traits\Sortable;
+
+    const SORT_ORDER = 'sort_order';
 
     /*
      * Disable timestamps by default.
@@ -41,31 +42,17 @@ class Service extends Model
      */
     public $translatable = ['name'];
 
+
     public $attachOne = [
         'icon' => \System\Models\File::class
     ];
 
-    public $belongsTo = [
-        'employe_group' => [
-             \Rainlab\User\Models\UserGroup::class,
-             'key' => 'employe_group_code',
-             'otherKey' => 'code'
-        ],
-        'parent'    => [Servise::class, 'key' => 'parent_id'],
-    ];
-
-
-    public $hasMany = [
-        'childrens'    => [Service::class, 'key' => 'parent_id'],
-    ];
-
-    public function getEmployeGroupCodeOptions()
-    {
-        return UserGroup::where('code', '!=', 'clients')->lists('name', 'code');
+    public function getTypeOptions() {
+        return [
+            'crash' => 'Поломка',
+            'accident' => 'ДТП',
+            'tracker' => 'Эвакуатор',
+        ];
     }
 
-    public function getTabOptions()
-    {
-        return UserGroup::where('code', '!=', 'clients')->lists('name', 'code');
-    }
 }

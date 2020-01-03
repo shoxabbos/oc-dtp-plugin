@@ -1,0 +1,8 @@
+<?php
+
+	$types = $record->getTypeOptions();
+	if ($record->type && isset($types[$record->type])) {
+		echo $types[$record->type];
+	}
+	
+?>

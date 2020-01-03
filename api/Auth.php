@@ -153,6 +153,7 @@ class Auth extends Controller
     public function refresh() {
         $user = null;
         $token = Input::get('token');
+
         try {
             // attempt to refresh the JWT
             if (!$token = JWTAuth::refresh($token)) {

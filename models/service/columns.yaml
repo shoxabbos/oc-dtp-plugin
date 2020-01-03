@@ -1,4 +1,3 @@
-treeExpanded: true
 columns:
     id:
         label: id
@@ -8,10 +7,6 @@ columns:
         label: 'itmaker.dtpapp::lang.calls.clients.name'
         type: text
         searchable: true
-    employe_group:
-        label: 'itmaker.dtpapp::lang.calls.employe_group_code'
-        type: text
-        searchable: true
-        sortable: true
-        select: name
-        relation: employe_group
+    type:
+        label: 'Тип услуги'
+        type: partial

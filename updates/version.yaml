@@ -42,3 +42,12 @@
 1.0.16:
     - 'Updated table itmaker_dtpapp_rates'
     - builder_table_update_itmaker_dtpapp_rates.php
+1.0.17:
+    - 'Add type file'
+    - migration1017.php
+1.0.18:
+    - 'Updated table itmaker_dtpapp_services'
+    - builder_table_update_itmaker_dtpapp_services_2.php
+1.0.19:
+    - 'Updated table itmaker_dtpapp_services'
+    - builder_table_update_itmaker_dtpapp_services_3.php
