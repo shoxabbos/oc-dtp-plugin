@@ -9,7 +9,6 @@ use Rainlab\User\Models\UserGroup;
 class Call extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    
     use \October\Rain\Database\Traits\SoftDelete;
 
     protected $dates = ['created_at', 'update_at', 'deleted_at'];
@@ -29,7 +28,6 @@ class Call extends Model
     public $belongsTo = [
         'client' => 'Rainlab\User\Models\User',
         'employe' => 'Rainlab\User\Models\User',
-        'employe_group' => ['Rainlab\User\Models\UserGroup', 'key' => 'employe_group_code', 'otherKey' => 'code'],
     ];
 
 

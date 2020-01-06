@@ -1,0 +1,36 @@
+<?php
+	$client = $model->client;
+
+?>
+
+	
+
+<div class="control-status-list">
+    <ul>
+        <li>
+            <span class="status-icon"><i class="icon-info"></i></span>
+            <span class="status-text"> Имя фамилия </span>
+            <span class="status-label primary"> <?=$client->name?> <?=$client->surname?> </span>
+        </li>
+
+        <li>
+            <span class="status-icon"><i class="icon-info"></i></span>
+            <span class="status-text"> Логин </span>
+            <span class="status-label primary"> <?=$client->email?> </span>
+        </li>
+
+        <li>
+            <span class="status-icon"><i class="icon-info"></i></span>
+            <span class="status-text"> Телефон </span>
+            <span class="status-label primary"> <?=$client->username?> </span>
+        </li>
+
+        <li>
+            <span class="status-icon"><i class="icon-info"></i></span>
+            <span class="status-text">Баланс</span>
+            <span class="status-label link"> <?=$client->balance?> сум.</span>
+        </li>
+    </ul>
+</div>
+
+

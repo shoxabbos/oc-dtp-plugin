@@ -55,29 +55,6 @@ class Plugin extends PluginBase
     public function extendingControllers()
     {
 
-        CallsController::extendFormFields(function($form, $model, $context) {
-            if (!$model instanceof CallModel) {
-                return;
-            }
-
-            if (!$model->client) {
-                $fields = Yaml::parseFile('./plugins/itmaker/dtpapp/models/call/user_not_fields.yaml');
-                $form->addTabFields($fields);
-            } else {
-                $fields = Yaml::parseFile('./plugins/itmaker/dtpapp/models/call/user_fields.yaml');
-                $form->addTabFields($fields);
-            }
-
-            if (!$model->employe) {
-                $fields = Yaml::parseFile('./plugins/itmaker/dtpapp/models/call/employe_not_fields.yaml');
-                $form->addTabFields($fields);
-            } else {
-                $fields = Yaml::parseFile('./plugins/itmaker/dtpapp/models/call/employe_fields.yaml');
-                $form->addTabFields($fields);
-            }
-
-        });
-
         UsersController::extendFormFields(function ($form, $model, $context) {
             if (!$model instanceof UserModel) {
                 return;

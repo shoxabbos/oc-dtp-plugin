@@ -58,3 +58,30 @@ tabs:
             span: auto
             type: fileupload
             tab: 'itmaker.dtpapp::lang.calls.params'
+        client_info:
+            span: left
+            path: client_info
+            type: partial
+            tab: Клиент
+        client:
+            label: Клиент
+            nameFrom: name
+            descriptionFrom: username
+            list: $/rainlab/user/models/user/columns.yaml
+            span: auto
+            readOnly: 1
+            type: recordfinder
+            tab: Клиент
+        employe_info:
+            span: auto
+            path: employe_info
+            type: partial
+            tab: Специалист
+        employe:
+            label: Специалист
+            nameFrom: name
+            descriptionFrom: username
+            list: $/rainlab/user/models/user/columns.yaml
+            span: auto
+            type: recordfinder
+            tab: Специалист

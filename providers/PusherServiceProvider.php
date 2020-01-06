@@ -9,8 +9,8 @@ class PusherServiceProvider extends ServiceProvider
     public function __construct($app)
     {
         $this->options = array(
-        'cluster' => 'ap3',
-        'useTLS' => true
+            'cluster' => 'ap3',
+            'useTLS' => true
         );
 
         parent::__construct($app);
