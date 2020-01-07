@@ -3,6 +3,7 @@
 use App;
 use Model;
 use Rainlab\User\Models\UserGroup;
+use Itmaker\DtpApp\Resources\CallResource;
 /**
  * Model call
  */
@@ -43,6 +44,13 @@ class Call extends Model
         'services' => [Service::class, 'table' => 'itmaker_dtpapp_calls_services']
     ];
 
+    protected $cats = [
+        'coor_lat' => 'double',
+        'coor_long' => 'double',
+        'client_id' => 'integer',
+        'id' => 'integer',
+    ];
+
     /**
      * @return userGroup codes except clients
      */
@@ -55,11 +63,23 @@ class Call extends Model
     public function getStatusOptions() {
         return [
             'new' => 'Новый',
-            'active' => 'Активный',
-            'approved' => 'Одобрен',
+            'inprogress' => 'Выполняется',
             'arrived' => 'Сотрудник прибыл',
             'completed' => 'Завершён',
         ];
     }
-    
+
+
+    public function beforeSave()
+    {
+        if ($this->isDirty('employe_id') && $this->status == 'new' && $this->employe_id) {
+            $this->status = 'inprogress';    
+        }
+
+
+        $data = new CallResource($this);
+        $pusher = App::make('pusher');
+        $pusher->trigger('call-status', "call-{$this->id}", $data);
+    }
+
 }

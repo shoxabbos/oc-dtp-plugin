@@ -4,7 +4,10 @@
 // public methods
 Route::group([
     'prefix' => 'api', 
-    'middleware' => 'Itmaker\DtpApp\Middlewares\LanguageDetector'
+    'middleware' => [
+    	'Itmaker\DtpApp\Middlewares\Logger',
+    	'Itmaker\DtpApp\Middlewares\LanguageDetector',
+    ]
 ], function() {
     // auth
     Route::post('auth/signin', 'Itmaker\DtpApp\Api\Auth@signin');
@@ -25,6 +28,7 @@ Route::group([
 Route::group([
     'prefix' => 'api',
     'middleware' => [
+    	'Itmaker\DtpApp\Middlewares\Logger',
     	'\Tymon\JWTAuth\Middleware\GetUserFromToken',
         'Itmaker\DtpApp\Middlewares\LanguageDetector',
     ]

@@ -45,7 +45,7 @@ class Calls extends Controller
         $user->calls()->create($data);
 
         $call = $user->calls()->orderByDesc('created_at')
-            ->with('services', 'employe', 'client', 'employe_group', 'images')->first();
+            ->with('services', 'employe', 'client', 'images')->first();
 
         return response()->json([
             'data' => $call
