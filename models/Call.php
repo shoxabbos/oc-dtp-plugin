@@ -76,10 +76,11 @@ class Call extends Model
             $this->status = 'inprogress';    
         }
 
-
-        $data = new CallResource($this);
-        $pusher = App::make('pusher');
-        $pusher->trigger('call-status', "call-{$this->id}", $data);
+        if ($this->isDirty()) {
+            $data = new CallResource($this);
+            $pusher = App::make('pusher');
+            $pusher->trigger('call-status', "call-{$this->id}", $data);    
+        }
     }
 
 }

@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use RainLab\User\Models\User as UserModel;
 
+use Itmaker\DtpApp\Models\Call;
+use Itmaker\DtpApp\Resources\CallResource;
+
 class Calls extends Controller
 {
     
@@ -16,6 +19,17 @@ class Calls extends Controller
 
     public function __construct() {
         $this->user = $this->auth();
+    }
+
+
+    public function index() {
+
+    }
+
+    public function view($id) {
+        $model = Call::find($id);
+
+        return new CallResource($model);
     }
 
     

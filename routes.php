@@ -1,4 +1,5 @@
 <?php
+use Itmaker\DtpApp\Models\Call;
 
 
 // public methods
@@ -22,6 +23,23 @@ Route::group([
     // Helper
 	Route::get('helper/tariffs', 'Itmaker\DtpApp\Api\Helper@tariffs');
 	Route::get('helper/services', 'Itmaker\DtpApp\Api\Helper@services');
+
+
+	// test locations
+	Route::any('locations', function() {
+		$data = \Input::only('id', 'lat', 'lon');
+		if (isset($data['id'])) {
+			$call = Call::find($data['id']);
+
+			if ($call) {
+				$call->employee_lat = $data['lat'];
+				$call->employee_long = $data['lon'];
+				$call->save();
+			}
+		}
+	});
+	
+
 });
  
 
@@ -40,6 +58,8 @@ Route::group([
 
     // private methods of call
     Route::post('calls', 'Itmaker\DtpApp\Api\Calls@create');
+    Route::get('calls', 'Itmaker\DtpApp\Api\Calls@index');
+    Route::get('call/{id}', 'Itmaker\DtpApp\Api\Calls@view');
 });
 
 
