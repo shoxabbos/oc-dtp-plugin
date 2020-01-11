@@ -17,14 +17,19 @@ class CallResource extends Resource
 			'comment' => $this->comment,
 			'employee_lat' => (double) $this->employee_lat, 
 			'employee_long' => (double) $this->employee_long,
-			'deleted_at' => $this->deleted_at,
-			'updated_at' => $this->updated_at,
-			'created_at' => $this->created_at,
+			'deleted_at' => $this->deleted_at ? $this->deleted_at->format('Y-m-d H:i') : null,
+			'updated_at' => $this->updated_at ? $this->updated_at->format('Y-m-d H:i') : null,
+			'created_at' => $this->created_at ? $this->created_at->format('Y-m-d H:i') : null,
 
 			'user' => $this->client ? new UserResource($this->client) : null,
 			'employe' => $this->employe ? new UserResource($this->employe) : null,
 			'services' => $this->services ? ServiceResource::collection($this->services) : null,
 		];
+
+
+		foreach ($this->images as $key => $value) {
+			$data['images'][] = $value->getThumb(600, 400);
+		}
 
 		return $data;
 	}

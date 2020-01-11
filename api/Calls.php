@@ -22,7 +22,7 @@ class Calls extends Controller
     }
 
     public function index() {
-        $query = $this->user->calls();
+        $query = $this->user->calls()->orderByDesc('id');
 
         return CallResource::collection($query->get());
     }
