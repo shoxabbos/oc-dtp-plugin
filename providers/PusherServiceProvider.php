@@ -1,5 +1,6 @@
 <?php namespace Itmaker\DtpApp\Providers;
 
+use \Pusher\Pusher;
 use October\Rain\Support\ServiceProvider;
 
 class PusherServiceProvider extends ServiceProvider
@@ -20,7 +21,7 @@ class PusherServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('pusher', function() {
-            return new \Pusher\Pusher(
+            return new Pusher(
                 '9090d7f4b6974f9e0c63',
                 'c33072f80b8d8dd9ad47',
                 '895882',

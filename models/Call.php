@@ -66,6 +66,7 @@ class Call extends Model
             'inprogress' => 'Выполняется',
             'arrived' => 'Сотрудник прибыл',
             'completed' => 'Завершён',
+            'canceled' => 'Отменен',
         ];
     }
 

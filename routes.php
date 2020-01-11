@@ -60,6 +60,7 @@ Route::group([
     Route::post('calls', 'Itmaker\DtpApp\Api\Calls@create');
     Route::get('calls', 'Itmaker\DtpApp\Api\Calls@index');
     Route::get('call/{id}', 'Itmaker\DtpApp\Api\Calls@view');
+    Route::get('call/{id}/cancel', 'Itmaker\DtpApp\Api\Calls@cancel');
 });
 
 

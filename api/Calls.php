@@ -21,9 +21,23 @@ class Calls extends Controller
         $this->user = $this->auth();
     }
 
-
     public function index() {
+        $query = $this->user->calls();
 
+        return CallResource::collection($query->get());
+    }
+
+    public function cancel($id) {
+        $call = $this->user->calls()->where('id', $id)->first();
+
+        if ($call) {
+            $call->status = 'canceled';
+            $call->save();
+
+            return new CallResource($call);
+        }
+
+        return response()->json(['error' => 'Call not found!']);
     }
 
     public function view($id) {
