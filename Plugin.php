@@ -37,7 +37,9 @@ class Plugin extends PluginBase
 
     private function extendingModels()
     {
-        UserModel::extend(function ($model){
+        UserModel::extend(function ($model) {
+            $model->addFillable(['type']);
+
             $model->rules = [
                 'email'    => 'between:6,255|email|unique:users',
                 'avatar'   => 'nullable|image|max:4000',
@@ -45,6 +47,7 @@ class Plugin extends PluginBase
                 'password' => 'required:create|between:' . UserSettings::MIN_PASSWORD_LENGTH_DEFAULT . ',255|confirmed',
                 'password_confirmation' => 'required_with:password|between:' . UserSettings::MIN_PASSWORD_LENGTH_DEFAULT . ',255',
             ];
+            
             $model->hasMany['calls'] = [ CallModel::class, 'key' => 'client_id'];
             $model->hasMany['employe_calls'] = [ CallModel::class, 'key' => 'employe_id'];
             $model->hasMany['locations'] = \Itmaker\DtpApp\Models\EmployeesLocation::class;

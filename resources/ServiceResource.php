@@ -11,6 +11,7 @@ class ServiceResource extends Resource
 			'id' => $this->id,
 			'name' => $this->name,
 			'type' => $this->type,
+			'price' => "10 000 so'm",
 		];
 
 		if ($this->icon) {

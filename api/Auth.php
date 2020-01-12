@@ -117,12 +117,13 @@ class Auth extends Controller
     }
 
     public function signup() {
-        $credentials = Input::only('name', 'surname', 'email', 'username', 'password', 'password_confirmation');
+        $credentials = Input::only('name', 'surname', 'email', 'username', 'password', 'password_confirmation', 'type');
 
         $rules = [
+            'type'      => 'required|in:client,master,specialists',
             'name'      => 'required|min:3',
             'surname'   => 'required|min:3',
-            'username'     => 'required|unique:users,username',
+            'username'  => 'required|unique:users,username',
             'password'  => 'required|min:6|confirmed',
             'email'     => 'required|min:3|email|unique:users,email'
         ];
