@@ -1,0 +1,5 @@
+fields:
+    name:
+        label: 'Названии компании'
+        span: auto
+        type: text

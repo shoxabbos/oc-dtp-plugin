@@ -22,6 +22,7 @@ Route::group([
 
     // Helper
 	Route::get('helper/tariffs', 'Itmaker\DtpApp\Api\Helper@tariffs');
+	Route::get('helper/insurances', 'Itmaker\DtpApp\Api\Helper@insurances');
 	Route::get('helper/services', 'Itmaker\DtpApp\Api\Helper@services');
 
 
@@ -79,6 +80,8 @@ Route::group([
 
 
 
+// $data = \App::make('fcm');
+// $data->sendNotification('Title', 'Description', 'dSQYimnN7vo:APA91bEEgzsFrEod8dWfaxBj0XbE3PMIyyZEjTj-1Io0xtR9u__I9Zn9bF7grHi7HZKbL5rebpe2N5qCQd3wfCoX53Le6ok-Bk6je-Pq_U6kpibBFj_91cCvOXw9jXHrM1WUxZikN22O');
 
 
 

@@ -20,6 +20,9 @@ permissions:
     manage_rates:
         tab: 'itmaker.dtpapp::lang.plugin.name'
         label: 'itmaker.dtpapp::lang.permissions.manage_rates'
+    manage_insurances:
+        tab: 'itmaker.dtpapp::lang.plugin.name'
+        label: 'Manage insurances'
 navigation:
     calls:
         label: 'itmaker.dtpapp::lang.menu.calls'
@@ -50,13 +53,15 @@ navigation:
                 icon: icon-sliders
                 permissions:
                     - manage_slides
-            locations:
-                label: locations
-                url: itmaker/dtpapp/employeeslocations
-                icon: icon-sitemap
             rates:
                 label: 'itmaker.dtpapp::lang.menu.rates'
                 url: itmaker/dtpapp/rates
                 icon: icon-sitemap
                 permissions:
                     - manage_rates
+            dtp-insurances:
+                label: 'Страховые компании'
+                url: itmaker/dtpapp/insurances
+                icon: icon-building-o
+                permissions:
+                    - manage_insurances

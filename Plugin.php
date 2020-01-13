@@ -10,6 +10,7 @@ use Rainlab\User\Models\UserGroup as UserGroupModel;
 use Rainlab\User\Models\Settings as UserSettings;
 use Itmaker\DtpApp\Models\Call as CallModel;
 use Itmaker\DtpApp\Controllers\Calls as CallsController;
+use \Itmaker\DtpApp\Models\Insurance;
             
 class Plugin extends PluginBase
 {
@@ -25,19 +26,16 @@ class Plugin extends PluginBase
     private function extendingModels()
     {
         UserModel::extend(function ($model) {
-            $model->addFillable(['type']);
-
-            $model->rules = [
-                'email'    => 'between:6,255|email|unique:users',
-                'avatar'   => 'nullable|image|max:4000',
-                'username' => 'required|between:2,255|unique:users',
-                'password' => 'required:create|between:' . UserSettings::MIN_PASSWORD_LENGTH_DEFAULT . ',255|confirmed',
-                'password_confirmation' => 'required_with:password|between:' . UserSettings::MIN_PASSWORD_LENGTH_DEFAULT . ',255',
-            ];
+            $model->addFillable(['type', 'insurance_id']);
             
             $model->hasMany['calls'] = [ CallModel::class, 'key' => 'client_id'];
             $model->hasMany['employe_calls'] = [ CallModel::class, 'key' => 'employe_id'];
-            $model->hasMany['locations'] = \Itmaker\DtpApp\Models\EmployeesLocation::class;
+            $model->hasOne['insurance'] = Insurance::class;
+
+
+            $model->addDynamicMethod('getInsuranceIdOptions', function() use ($model) {
+                return Insurance::lists('name', 'id');
+            });
 
         });
     }
@@ -67,7 +65,13 @@ class Plugin extends PluginBase
                         'master' => 'Master',
                         'specialists' => 'Specialists',
                     ]
-                ]
+                ],
+                'insurance_id' => [
+                    'type' => 'dropdown',
+                    'label' => 'Страховая компания',
+                    'span' => 'auto',
+                    'tab' => 'DTP fields',
+                ],
             ];
 
             $form->addTabFields($fields);
@@ -77,6 +81,8 @@ class Plugin extends PluginBase
     public function extendingApp()
     {
         App::register('Itmaker\DtpApp\Providers\PusherServiceProvider');
+        App::register('Itmaker\DtpApp\Providers\PushNotificationProvider');
+
         $alias = AliasLoader::getInstance();
         $alias->alias('pusher', 'Itmaker\DtpApp\Providers\PusherServiceProvider');
         $alias->alias('fcm', 'Itmaker\DtpApp\Providers\PushNotificationProvider');

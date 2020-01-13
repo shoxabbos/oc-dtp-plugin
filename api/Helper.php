@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 
 use Itmaker\DtpApp\Models\Tarif;
 use Itmaker\DtpApp\Models\Service;
+use Itmaker\DtpApp\Models\Insurance;
 
 use Itmaker\DtpApp\Resources\TariffResource;
 use Itmaker\DtpApp\Resources\ServiceResource;
@@ -13,6 +14,15 @@ use Itmaker\DtpApp\Resources\ServiceResource;
 
 class Helper extends Controller
 {
+
+
+    public function insurances() {
+        $data = Insurance::get();
+
+        return [
+            'data' => $data,
+        ];
+    }
 
     public function tariffs() {
         $collection = Tarif::with('image')->get();

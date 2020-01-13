@@ -72,3 +72,15 @@
 1.0.26:
     - 'Updated table itmaker_dtpapp_calls'
     - builder_table_update_itmaker_dtpapp_calls_6.php
+1.0.27:
+    - 'Added device id & device type'
+    - migration1027.php
+1.0.28:
+    - 'Created table itmaker_dtpapp_insurances'
+    - builder_table_create_itmaker_dtpapp_insurances.php
+1.0.29:
+    - 'Updated table itmaker_dtpapp_insurances'
+    - builder_table_update_itmaker_dtpapp_insurances.php
+1.0.30:
+    - 'Add insurence id fields to users'
+    - migration1030.php

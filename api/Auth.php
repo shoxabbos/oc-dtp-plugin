@@ -117,7 +117,7 @@ class Auth extends Controller
     }
 
     public function signup() {
-        $credentials = Input::only('name', 'surname', 'email', 'username', 'password', 'password_confirmation', 'type');
+        $credentials = Input::only('name', 'surname', 'email', 'username', 'password', 'password_confirmation', 'type', 'insurance_id');
 
         $rules = [
             'type'      => 'required|in:client,master,specialists',

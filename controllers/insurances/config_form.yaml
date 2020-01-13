@@ -1,0 +1,10 @@
+name: Insurances
+form: $/itmaker/dtpapp/models/insurance/fields.yaml
+modelClass: Itmaker\DtpApp\Models\Insurance
+defaultRedirect: itmaker/dtpapp/insurances
+create:
+    redirect: 'itmaker/dtpapp/insurances/update/:id'
+    redirectClose: itmaker/dtpapp/insurances
+update:
+    redirect: itmaker/dtpapp/insurances
+    redirectClose: itmaker/dtpapp/insurances

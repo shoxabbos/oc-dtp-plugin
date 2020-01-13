@@ -1,0 +1,12 @@
+list: $/itmaker/dtpapp/models/insurance/columns.yaml
+modelClass: Itmaker\DtpApp\Models\Insurance
+title: Insurances
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'itmaker/dtpapp/insurances/update/:id'
