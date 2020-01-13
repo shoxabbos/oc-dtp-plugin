@@ -24,6 +24,34 @@ class User extends Controller
         return new UserResource($this->user);
     }
 
+    public function setDeviceConf() {
+        $user = $this->auth();
+
+        $data = Input::only('device_type', 'device_id');
+        if (!isset($data['device_type']) && empty($data['device_type'])) {
+            $data['device_type'] = 'android';
+        }
+
+        $rules = [
+            'device_type' => 'required|min:2|in:android,ios',
+            'device_id' => 'required|min:5',
+        ];
+
+        $validation = Validator::make($data, $rules);
+        if ($validation->fails()){
+            return response()->json(['error' => $validation->messages()->first()], 422);
+        }
+
+        $user->device_id = $data['device_id'];
+        $user->device_type = $data['device_type'];
+        $user->save();
+
+        return [
+            'data'    => new UserResource($user),
+            'success' => 'ok',
+        ];
+    }
+
     public function update() {
         $user = $this->auth();
         $data = Input::only('username', 'name', 'surname', 'password', 'password_confirmation', 'email', 'avatar');

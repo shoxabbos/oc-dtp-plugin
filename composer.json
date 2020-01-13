@@ -3,7 +3,8 @@
     "description": "Add real-time features to your OctoberCMS app",
     "type": "library",
     "require": {
-        "pusher/pusher-php-server": "^3.4@dev"
+        "pusher/pusher-php-server": "^3.4@dev",
+        "kreait/firebase-php": "^4.35"
     },
     "license": "MIT",
     "authors": [

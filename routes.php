@@ -54,6 +54,7 @@ Route::group([
 	// private methods of user
     Route::get('user/get', 'Itmaker\DtpApp\Api\User@get');
     Route::post('user/update', 'Itmaker\DtpApp\Api\User@update');
+    Route::post('user/set-device-conf', 'Itmaker\DtpApp\Api\User@setDeviceConf');
 
 
     // private methods of call

@@ -79,5 +79,6 @@ class Plugin extends PluginBase
         App::register('Itmaker\DtpApp\Providers\PusherServiceProvider');
         $alias = AliasLoader::getInstance();
         $alias->alias('pusher', 'Itmaker\DtpApp\Providers\PusherServiceProvider');
+        $alias->alias('fcm', 'Itmaker\DtpApp\Providers\PushNotificationProvider');
     }
 }
