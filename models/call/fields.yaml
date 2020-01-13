@@ -8,6 +8,7 @@ fields:
         label: 'itmaker.dtpapp::lang.calls.status'
         showSearch: true
         span: auto
+        readOnly: 1
         type: dropdown
     comment:
         label: 'itmaker.dtpapp::lang.calls.addantial_comment'
@@ -21,26 +22,6 @@ fields:
         type: datepicker
 tabs:
     fields:
-        coor_lat:
-            label: 'itmaker.dtpapp::lang.calls.coor_lat'
-            span: auto
-            type: text
-            tab: 'itmaker.dtpapp::lang.calls.params'
-        coor_long:
-            label: 'itmaker.dtpapp::lang.calls.coor_long'
-            span: auto
-            type: text
-            tab: 'itmaker.dtpapp::lang.calls.params'
-        map:
-            span: full
-            label: 'itmaker.dtpapp::lang.calls.map'
-            type: partial
-            tab: 'itmaker.dtpapp::lang.calls.params'
-        address:
-            label: 'itmaker.dtpapp::lang.calls.address'
-            span: full
-            type: text
-            tab: 'itmaker.dtpapp::lang.calls.params'
         services:
             label: 'itmaker.dtpapp::lang.calls.services'
             nameFrom: name
@@ -58,6 +39,28 @@ tabs:
             span: auto
             type: fileupload
             tab: 'itmaker.dtpapp::lang.calls.params'
+        
+        coor_lat:
+            label: 'itmaker.dtpapp::lang.calls.coor_lat'
+            span: auto
+            type: text
+            tab: 'Map'
+        coor_long:
+            label: 'itmaker.dtpapp::lang.calls.coor_long'
+            span: auto
+            type: text
+            tab: 'Map'
+        map:
+            span: full
+            label: 'itmaker.dtpapp::lang.calls.map'
+            type: partial
+            tab: 'Map'
+        address:
+            label: 'itmaker.dtpapp::lang.calls.address'
+            span: full
+            type: text
+            tab: 'Map'
+
         client_info:
             span: left
             path: client_info
