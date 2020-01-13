@@ -87,7 +87,7 @@ Route::group([
 // index route for clients app
 Route::group([
 	'prefix' => 'api', 
-	'middleware' => '\Itmaker\DtpApp\Classes\LocaleMiddleware'
+	'middleware' => '\Itmaker\DtpApp\Middlewares\LanguageDetector'
 ], function() {
 	Route::get('index', 'itmaker\dtpapp\api\Api@index');
 	//Route::get('get-slides', 'itmaker\dtpapp\api\Api@getSlides');
@@ -96,7 +96,7 @@ Route::group([
 //login and register routes for all users
 Route::group([
 	'prefix' => '/api',
-	'middleware' => '\Itmaker\DtpApp\Classes\LocaleMiddleware'
+	'middleware' => '\Itmaker\DtpApp\Middlewares\LanguageDetector'
 ], function(){
 	Route::post('/client/register', 'itmaker\dtpapp\api\Users@registerClient');
     Route::post('/client/login', 'itmaker\dtpapp\api\Users@loginClient');
@@ -108,7 +108,7 @@ Route::group([
   
 Route::group([
 	'prefix' => 'api/client',
-	'middleware' => ['\Tymon\JWTAuth\Middleware\GetUserFromToken', '\Itmaker\DtpApp\Classes\LocaleMiddleware']
+	'middleware' => ['\Tymon\JWTAuth\Middleware\GetUserFromToken', '\Itmaker\DtpApp\Middlewares\LanguageDetector']
 ], function() {
 	Route::get('/get-user', 'itmaker\dtpapp\api\Users@getUser');
 	Route::post('/update-user', 'itmaker\dtpapp\api\Users@updateUser');
@@ -123,7 +123,7 @@ Route::group([
 
 Route::group([
 	'prefix' => 'api/employe',
-	'middleware' => ['\Tymon\JWTAuth\Middleware\GetUserFromToken', '\Itmaker\DtpApp\Classes\LocaleMiddleware']
+	'middleware' => ['\Tymon\JWTAuth\Middleware\GetUserFromToken', '\Itmaker\DtpApp\Middlewares\LanguageDetector']
 ], function() {
 	Route::get('/get-user', 'itmaker\dtpapp\api\Api@getUser');
 	Route::post('/update-user', 'itmaker\dtpapp\api\Users@updateUser');

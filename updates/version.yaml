@@ -66,3 +66,9 @@
 1.0.24:
     - 'Updated table itmaker_dtpapp_calls'
     - builder_table_update_itmaker_dtpapp_calls_5.php
+1.0.25:
+    - 'Drop table itmaker_dtpapp_statuses'
+    - builder_table_delete_itmaker_dtpapp_statuses.php
+1.0.26:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls_6.php

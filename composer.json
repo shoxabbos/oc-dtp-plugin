@@ -3,7 +3,7 @@
     "description": "Add real-time features to your OctoberCMS app",
     "type": "library",
     "require": {
-        "pusher/pusher-php-server": "*"
+        "pusher/pusher-php-server": "^3.4@dev"
     },
     "license": "MIT",
     "authors": [

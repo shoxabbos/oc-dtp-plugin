@@ -13,20 +13,7 @@ use Itmaker\DtpApp\Controllers\Calls as CallsController;
             
 class Plugin extends PluginBase
 {
-    public function registerComponents()
-    {
-    }
-
-    public function registerSettings()
-    {
-    }
-
-    public function register()
-    {
-        // this method registers console commands
-        $this->registerConsoleCommand('itmaker.runwebsocket', 'Itmaker\DtpApp\Console\RunWebSocket');
-    }
-
+    
     public function boot()
     {
         $this->extendingModels();
