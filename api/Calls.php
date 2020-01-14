@@ -26,6 +26,33 @@ class Calls extends Controller
         $this->push = \App::make('fcm');
     }
 
+    public function setLocation($id) {
+        $user = $this->user;
+        $model = $this->user->employe_calls()->where('id', $id)->first();
+
+        $data = Input::only('coor_lat', 'coor_long');
+        $rules = [
+            'coor_lat' => 'required|numeric',
+            'coor_long' => 'required|numeric',
+        ];
+
+        $validation = Validator::make($data, $rules);
+
+        if ($validation->fails()) {
+            return response()->json(['error' => $validation->messages()->first()]);
+        }
+
+        if (!$model) {
+            return response()->json(['error' => 'Record not found'], 404);
+        }
+
+        $model->coor_long = $data['coor_long'];
+        $model->coor_lat = $data['coor_lat'];
+        $model->save();
+
+        return new CallResource($model);
+    }
+
     public function index() {
         if ($this->user->type == 'client') {
             $query = $this->user->calls();
