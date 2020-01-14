@@ -2,6 +2,7 @@
 
 use Lang;
 use Input;
+use Queue;
 use JWTAuth;
 use Validator;
 use ValidationException;
@@ -11,6 +12,9 @@ use RainLab\User\Models\User as UserModel;
 
 use Itmaker\DtpApp\Models\Call;
 use Itmaker\DtpApp\Resources\CallResource;
+
+use Itmaker\DtpApp\Jobs\SendSinglePush;
+use Itmaker\DtpApp\Jobs\NewCallCreated;
 
 class Calls extends Controller
 {
@@ -42,11 +46,11 @@ class Calls extends Controller
 
         // send push to client
         if ($model->client && $model->client->device_id) {
-            $this->push->sendNotification(
-                'Ваша заявка принята', 
-                'Наш специалист уже в пути', 
-                $model->client->device_id
-            );
+            Queue::push('SendSinglePush', [
+                'title' => 'Ваша заявка принята',
+                'body' => 'Наш специалист уже в пути',
+                'token' => $model->client->device_id
+            ]);
         }
 
         return new CallResource($model); 
@@ -99,6 +103,11 @@ class Calls extends Controller
 
         $call = $user->calls()->orderByDesc('created_at')
             ->with('services', 'employe', 'client', 'images')->first();
+
+        // send push to client
+        if ($call) {
+            Queue::push(NewCallCreated::class, ['id' => $call->id]);
+        }
 
         return response()->json([
             'data' => $call
