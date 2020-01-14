@@ -43,6 +43,36 @@ class Plugin extends PluginBase
     public function extendingControllers()
     {
 
+        UsersController::extendListColumns(function($list, $model) {
+            if (!$model instanceof UserModel) {
+                return;
+            }
+            
+            $list->addColumns([
+                'type' => [
+                    'label' => 'Client type',
+                    'invisible' => true,
+                ],
+                'balance' => [
+                    'label' => 'Balance',
+                    'invisible' => true,
+                ],
+                'insurance_id' => [
+                    'label' => 'Insurance',
+                    'invisible' => true,
+                ],
+                'device_type' => [
+                    'label' => 'Device type',
+                    'invisible' => true,
+                ],
+                'device_id' => [
+                    'label' => 'Device ID',
+                    'invisible' => true,
+                ]
+            ]);
+
+        });
+
         UsersController::extendFormFields(function ($form, $model, $context) {
             if (!$model instanceof UserModel) {
                 return;
