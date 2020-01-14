@@ -11,7 +11,7 @@ class SendSinglePush
      	$firebase->sendNotification(
      		$data['title'],
      		$data['body'],
-     		$data['token'],
+     		$data['token']
      	);
 
     	$job->delete();

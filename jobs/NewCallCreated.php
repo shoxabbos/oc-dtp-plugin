@@ -24,17 +24,27 @@ class NewCallCreated
         	$query = User::where('type', 'specialists');
         }
 
-        $tokens = $query->where('device_id', '')->lists('device_id', 'id');
+        $tokens = $query->lists('device_id');
 
-        if (empty($lists)) {
+        foreach ($tokens as $key => $value) {
+            if (empty($value)) {
+                unset($tokens[$key]);
+            }
+        }
+
+        if (empty($tokens)) {
         	return $job->delete();
         }
 
+        $body = $model->address.", ".$model->client->username;
+
      	$firebase->sendNotificationMultiple(
      		$tokens,
-     		'Title',
-     		'Body',
-     		['id' => $model->id]
+     		'Новая заявка',
+     		$body,
+     		[
+                'id' => $model->id
+            ]
      	);
 
         $job->delete();

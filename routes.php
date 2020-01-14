@@ -61,6 +61,7 @@ Route::group([
     // private methods of call
     Route::post('calls', 'Itmaker\DtpApp\Api\Calls@create');
     Route::get('calls', 'Itmaker\DtpApp\Api\Calls@index');
+    Route::get('calls/new', 'Itmaker\DtpApp\Api\Calls@new');
     Route::get('call/{id}', 'Itmaker\DtpApp\Api\Calls@view');
     Route::get('call/{id}/cancel', 'Itmaker\DtpApp\Api\Calls@cancel');
     Route::get('call/{id}/accept', 'Itmaker\DtpApp\Api\Calls@accept');

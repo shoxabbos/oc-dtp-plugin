@@ -26,6 +26,15 @@ class Calls extends Controller
         $this->push = \App::make('fcm');
     }
 
+    public function new() {
+        $page = input('page', 1);
+        $perpage = input('page', 10);
+
+        $result = Call::paginate($perpage, $page);
+
+        return CallResource::collection($result);
+    }
+
     public function setLocation($id) {
         $user = $this->user;
         $model = $this->user->employe_calls()->where('id', $id)->first();
@@ -101,14 +110,28 @@ class Calls extends Controller
     public function cancel($id) {
         $call = $this->user->calls()->where('id', $id)->first();
 
-        if ($call) {
-            $call->status = 'canceled';
-            $call->save();
+        if (!$call) {
+            return response()->json(['error' => 'Call not found'], 404);
+        } 
 
-            return new CallResource($call);
+        if ($call->status == 'canceled') {
+            //return response()->json(['error' => 'Call already cancelled'], 422);
         }
 
-        return response()->json(['error' => 'Call not found!']);
+        // change status
+        $call->status = 'canceled';
+        $call->save();
+
+        // send notify to employe if that exists
+        if ($call->employe && $call->employe->device_id) {
+            Queue::push(SendSinglePush::class, [
+                'title' => 'Клиент отменил заявку',
+                'body' => '',
+                'token' => $call->employe->device_id
+            ]);
+        }
+
+        return new CallResource($call);
     }
 
     public function view($id) {

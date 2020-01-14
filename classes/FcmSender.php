@@ -15,7 +15,7 @@ class FcmSender {
 	}
 
 
-	public function sendNotification($title, $body, $token, $data = []) {
+	public function sendNotification($title, $body, $token, $data = ['key' => 'value']) {
 		$notification = Notification::create($title, $body);
 
 		$message = CloudMessage::withTarget('token', $token)
@@ -26,7 +26,7 @@ class FcmSender {
 	}
 
 
-	public function sendNotificationMultiple($tokens, $title, $body, $data = []) {
+	public function sendNotificationMultiple($tokens, $title, $body, $data = ['key' => 'value']) {
 		$notification = Notification::create($title, $body);
 		$message = CloudMessage::new()->withNotification($notification);
 
