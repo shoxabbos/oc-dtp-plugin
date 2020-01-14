@@ -27,9 +27,21 @@ class Calls extends Controller
     }
 
     public function index() {
-        $query = $this->user->calls()->orderByDesc('id');
+        $query = $this->user;
 
-        return CallResource::collection($query->get());
+        if ($this->user->type == 'client') {
+            $query->calls();
+        } else {
+            $query->employe_calls();
+        }
+
+        $result = $query->orderByDesc('id')->get();
+
+        if (empty($result)) {
+            return response()->json(['error' => 'History not found'], 404);
+        }
+
+        return CallResource::collection($result);
     }
 
     public function accept($id) {

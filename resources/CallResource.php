@@ -27,7 +27,7 @@ class CallResource extends Resource
 		];
 
 
-		foreach ($this->images as $key => $value) {
+		if ($this->images) foreach ($this->images as $key => $value) {
 			$data['images'][] = $value->getThumb(600, 400);
 		}
 
