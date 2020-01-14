@@ -27,12 +27,10 @@ class Calls extends Controller
     }
 
     public function index() {
-        $query = $this->user;
-
         if ($this->user->type == 'client') {
-            $query->calls();
+            $query = $this->user->calls();
         } else {
-            $query->employe_calls();
+            $query = $this->user->employe_calls();
         }
 
         $result = $query->orderByDesc('id')->get();
@@ -44,6 +42,7 @@ class Calls extends Controller
         return CallResource::collection($result);
     }
 
+
     public function accept($id) {
         $user = $this->user;
         $model = Call::find($id);
@@ -52,13 +51,17 @@ class Calls extends Controller
             return response()->json(['error' => 'Call not found'], 404);
         }
 
+        if ($user->type == 'client') {
+            return response()->json(['error' => 'You cant accept this call'], 422);
+        }
+
         // add employe
         $model->employe = $user;
         $model->save();
 
         // send push to client
         if ($model->client && $model->client->device_id) {
-            Queue::push('SendSinglePush', [
+            Queue::push(SendSinglePush::class, [
                 'title' => 'Ваша заявка принята',
                 'body' => 'Наш специалист уже в пути',
                 'token' => $model->client->device_id
