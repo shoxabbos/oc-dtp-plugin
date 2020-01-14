@@ -19,12 +19,37 @@ class Calls extends Controller
 
     public function __construct() {
         $this->user = $this->auth();
+        $this->push = \App::make('fcm');
     }
 
     public function index() {
         $query = $this->user->calls()->orderByDesc('id');
 
         return CallResource::collection($query->get());
+    }
+
+    public function accept($id) {
+        $user = $this->user;
+        $model = Call::find($id);
+
+        if (!$model || $model->status != 'new' || $model->employe) {
+            return response()->json(['error' => 'Call not found'], 404);
+        }
+
+        // add employe
+        $model->employe = $user;
+        $model->save();
+
+        // send push to client
+        if ($model->client && $model->client->device_id) {
+            $this->push->sendNotification(
+                'Ваша заявка принята', 
+                'Наш специалист уже в пути', 
+                $model->client->device_id
+            );
+        }
+
+        return new CallResource($model); 
     }
 
     public function cancel($id) {
