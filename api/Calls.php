@@ -100,7 +100,11 @@ class Calls extends Controller
             Queue::push(SendSinglePush::class, [
                 'title' => 'Ваша заявка принята',
                 'body' => 'Наш специалист уже в пути',
-                'token' => $model->client->device_id
+                'token' => $model->client->device_id,
+                'data' => [
+                    'action_type' => 'call_accepted',
+                    'call' => $model
+                ],
             ]);
         }
 
@@ -127,7 +131,11 @@ class Calls extends Controller
             Queue::push(SendSinglePush::class, [
                 'title' => 'Клиент отменил заявку',
                 'body' => '',
-                'token' => $call->employe->device_id
+                'token' => $call->employe->device_id,
+                'data' => [
+                    'call' => $call,
+                    'action_type' => 'call_canceled'
+                ],
             ]);
         }
 
