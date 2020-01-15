@@ -21,6 +21,7 @@ class Logger
             'url' => $request->path(),
             'method' => $request->method(),
             'input' => \Input::all(),
+            'headers' => $request->header(),
             'output' => json_decode($response->getContent(), true),
             'user' => $user ? $user->toArray() : null
         ];

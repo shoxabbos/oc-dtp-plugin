@@ -31,8 +31,21 @@ class UserResource extends Resource
                   "is_guest" => $this->is_guest,
                   "is_superuser" => $this->is_superuser,
                   "image" => $this->avatar ? $this->avatar->getThumb(250, 250, ['mode' => 'crop']) : null,
+                  'active_call' => null,
 		];
 
+            if ($this->type == 'client') {
+                  $activeCall = $this->calls()->orderByDesc('id')->first();
+            } else {
+                  $activeCall = $this->employe_calls()->orderByDesc('id')->first();
+            }
+
+            if ($activeCall && !in_array($activeCall->status, ['canceled', 'completed'])) {
+                  $activeCall->client;
+                  $activeCall->employe;
+                  $activeCall->services;
+                  $data['active_call'] = $activeCall;
+            }
 
 		return $data;
 	}

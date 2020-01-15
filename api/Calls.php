@@ -30,7 +30,7 @@ class Calls extends Controller
         $page = input('page', 1);
         $perpage = input('page', 10);
 
-        $result = Call::paginate($perpage, $page);
+        $result = Call::where('status', 'new')->paginate($perpage, $page);
 
         return CallResource::collection($result);
     }
@@ -55,8 +55,8 @@ class Calls extends Controller
             return response()->json(['error' => 'Record not found'], 404);
         }
 
-        $model->coor_long = $data['coor_long'];
-        $model->coor_lat = $data['coor_lat'];
+        $model->employee_long = $data['coor_long'];
+        $model->employee_lat = $data['coor_lat'];
         $model->save();
 
         return new CallResource($model);
