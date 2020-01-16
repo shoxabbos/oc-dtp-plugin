@@ -42,7 +42,6 @@ class NewCallCreated
      		$tokens, 
             'Новая заявка', 
             $body,
-     		
             [
                 'action_type' => 'new_call', 
                 'call' => $model->id
