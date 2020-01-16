@@ -119,7 +119,7 @@ class Calls extends Controller
         } 
 
         if ($call->status == 'canceled') {
-            //return response()->json(['error' => 'Call already cancelled'], 422);
+            return response()->json(['error' => 'Call already cancelled'], 422);
         }
 
         // change status
