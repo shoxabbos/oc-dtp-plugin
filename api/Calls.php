@@ -172,7 +172,7 @@ class Calls extends Controller
         $validation = Validator::make($data, $rules);
 
         if ($validation->fails()) {
-            return response()->json(['error' => $validation->messages()->first()]);
+            return response()->json(['error' => $validation->messages()->first()], 422);
         }
 
         $data['status'] = 'new';
