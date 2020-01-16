@@ -55,8 +55,45 @@ class Calls extends Controller
             return response()->json(['error' => 'Record not found'], 404);
         }
 
+
         $model->employee_long = $data['coor_long'];
         $model->employee_lat = $data['coor_lat'];
+
+
+        $diff = $this->distance(
+            $model->coor_lat, $model->coor_long,
+            $model->employee_lat, $model->employee_long
+        );
+
+
+        if ($diff < 1000 && !$model->can_set_arrived_status) {
+            $model->can_set_arrived_status = 1;
+
+            if ($model->client && $model->client->device_id) {
+                Queue::push(SendSinglePush::class, [
+                    'title' => 'Специалист почти рядом',
+                    'body' => 'Наш специалист уже в пути',
+                    'token' => $model->client->device_id,
+                    'data' => [
+                        'action_type' => 'call_almost_arrived',
+                        'call' => $model->id,
+                    ]
+                ]); 
+            }
+
+            if ($model->employe && $model->employe->device_id) {
+                Queue::push(SendSinglePush::class, [
+                    'title' => 'Осталось еще примерно 1 километр',
+                    'body' => '',
+                    'token' => $model->employe->device_id,
+                    'data' => [
+                        'action_type' => 'call_almost_arrived',
+                        'call' => $model->id,
+                    ],
+                ]); 
+            }
+        }
+
         $model->save();
 
         return new CallResource($model);
@@ -236,6 +273,17 @@ class Calls extends Controller
         }
 
         return $this->user;
+    }
+
+
+    private function distance($lat1, $lng1, $lat2, $lng2){
+        return ceil(12745594 * asin(sqrt(
+            pow(sin(deg2rad($lat2-$lat1)/2),2)
+            +
+            cos(deg2rad($lat1)) *
+            cos(deg2rad($lat2)) *
+            pow(sin(deg2rad($lng2-$lng1)/2),2)
+        )));
     }
 
 }
