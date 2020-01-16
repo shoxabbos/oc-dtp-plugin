@@ -111,6 +111,37 @@ class Calls extends Controller
         return new CallResource($model); 
     }
 
+    public function arrived($id) {
+        $call = $this->user->calls()->where('id', $id)->first();
+
+        if (!$call) {
+            return response()->json(['error' => 'Call not found'], 404);
+        } 
+
+        if ($call->status == 'arrived') {
+            return response()->json(['error' => 'Call status already arrived'], 422);
+        }
+
+        // change status
+        $call->status = 'arrived';
+        $call->save();
+
+        // send notify to employe if that exists
+        if ($call->client && $call->client->device_id) {
+            Queue::push(SendSinglePush::class, [
+                'title' => 'Специалист прибыл',
+                'body' => '',
+                'token' => $call->client->device_id,
+                'data' => [
+                    'call' => $call->id,
+                    'action_type' => 'call_arrived'
+                ],
+            ]);
+        }
+
+        return new CallResource($call);
+    }
+
     public function cancel($id) {
         $call = $this->user->calls()->where('id', $id)->first();
 
@@ -125,7 +156,7 @@ class Calls extends Controller
         // change status
         $call->status = 'canceled';
         $call->save();
-
+ 
         // send notify to employe if that exists
         if ($call->employe && $call->employe->device_id) {
             Queue::push(SendSinglePush::class, [
