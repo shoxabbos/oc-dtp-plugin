@@ -180,7 +180,11 @@ class Calls extends Controller
     }
 
     public function cancel($id) {
-        $call = $this->user->calls()->where('id', $id)->first();
+        if ($this->user->type == 'client') {
+            $call = $this->user->calls()->where('id', $id)->first();    
+        } else {
+            $call = $this->user->employe_calls()->where('id', $id)->first();    
+        }
 
         if (!$call) {
             return response()->json(['error' => 'Call not found'], 404);
