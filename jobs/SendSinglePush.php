@@ -8,13 +8,8 @@ class SendSinglePush
     {
      	$firebase = App::make('fcm');
 
-     	$firebase->sendNotification(
-     		$data['title'],
-     		$data['body'],
-     		$data['token'],
-            $data['data']
-     	);
-
+     	$firebase->sendNotification($data['title'], $data['body'], $data['token'], $data['data']);
+ 
     	$job->delete();
     }
 }

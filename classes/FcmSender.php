@@ -28,7 +28,9 @@ class FcmSender {
 
 	public function sendNotificationMultiple($tokens, $title, $body, $data = ['key' => 'value']) {
 		$notification = Notification::create($title, $body);
-		$message = CloudMessage::new()->withNotification($notification);
+		$message = CloudMessage::new()
+			->withNotification($notification)
+			->withData($data);
 
 		return $this->firebase->sendMulticast($message, $tokens);
 	}

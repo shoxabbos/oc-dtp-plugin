@@ -103,9 +103,9 @@ class Calls extends Controller
                 'token' => $model->client->device_id,
                 'data' => [
                     'action_type' => 'call_accepted',
-                    'call' => $model
+                    'call' => $model->id,
                 ],
-            ]);
+            ]); 
         }
 
         return new CallResource($model); 
@@ -133,7 +133,7 @@ class Calls extends Controller
                 'body' => '',
                 'token' => $call->employe->device_id,
                 'data' => [
-                    'call' => $call,
+                    'call' => $call->id,
                     'action_type' => 'call_canceled'
                 ],
             ]);
@@ -144,6 +144,10 @@ class Calls extends Controller
 
     public function view($id) {
         $model = Call::find($id);
+
+        if (!$model) {
+            return response()->json(['error' => 'Call not found'], 404);
+        }
 
         return new CallResource($model);
     }

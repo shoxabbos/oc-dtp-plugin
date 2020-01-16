@@ -39,8 +39,14 @@ class NewCallCreated
         $body = $model->address.", ".$model->client->username;
 
      	$firebase->sendNotificationMultiple(
-     		$tokens, 'Новая заявка', $body,
-     		['action_type' => 'new_call', 'call' => $model]
+     		$tokens, 
+            'Новая заявка', 
+            $body,
+     		
+            [
+                'action_type' => 'new_call', 
+                'call' => $model->id
+            ]
      	);
 
         $job->delete();

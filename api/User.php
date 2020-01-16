@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use RainLab\User\Models\User as UserModel;
 use RainLab\User\Models\UserGroup as UserGroupModel;
 use Itmaker\DtpApp\Resources\UserResource;
+use Itmaker\DtpApp\Resources\UserWithCallResource;
 
 class User extends Controller
 {
@@ -21,7 +22,7 @@ class User extends Controller
     }
 
     public function get() {
-        return new UserResource($this->user);
+        return new UserWithCallResource($this->user);
     }
 
     public function setDeviceConf() {
