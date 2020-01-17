@@ -157,7 +157,7 @@ class Calls extends Controller
             ]); 
         }
 
-        if ($call->employe && $call->employe->device_id) {
+        if ($model->employe && $model->employe->device_id) {
             Queue::push(SendSinglePush::class, [
                 'title' => 'Заявка завершена',
                 'body' => '',
