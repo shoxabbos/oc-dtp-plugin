@@ -198,18 +198,40 @@ class Calls extends Controller
         $call->status = 'canceled';
         $call->save();
  
+
+
         // send notify to employe if that exists
-        if ($call->employe && $call->employe->device_id) {
-            Queue::push(SendSinglePush::class, [
-                'title' => 'Клиент отменил заявку',
-                'body' => '',
-                'token' => $call->employe->device_id,
-                'data' => [
-                    'call' => $call->id,
-                    'action_type' => 'call_canceled'
-                ],
-            ]);
+        if ($this->user->type == 'client') {
+
+            if ($call->employe && $call->employe->device_id) {
+                Queue::push(SendSinglePush::class, [
+                    'title' => 'Клиент отменил заявку',
+                    'body' => '',
+                    'token' => $call->employe->device_id,
+                    'data' => [
+                        'call' => $call->id,
+                        'action_type' => 'call_canceled'
+                    ],
+                ]);
+            }    
+
+        } else {
+
+            if ($call->client && $call->client->device_id) {
+                Queue::push(SendSinglePush::class, [
+                    'title' => 'Специалист отменил заявку',
+                    'body' => '',
+                    'token' => $call->client->device_id,
+                    'data' => [
+                        'call' => $call->id,
+                        'action_type' => 'call_canceled'
+                    ],
+                ]);
+            }
+
         }
+
+        
 
         return new CallResource($call);
     }
