@@ -14,6 +14,7 @@ class CallResource extends Resource
 			'address' => $this->address,
 			'type' => $this->type,
 			'status' => $this->status,
+			'can_set_arrived_status' => $this->can_set_arrived_status,
 			'comment' => $this->comment,
 			'employee_lat' => (double) $this->employee_lat, 
 			'employee_long' => (double) $this->employee_long,

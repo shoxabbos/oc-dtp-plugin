@@ -2,7 +2,9 @@
 
 use App;
 use Model;
+use Queue;
 use Rainlab\User\Models\UserGroup;
+use Itmaker\DtpApp\Jobs\SendSinglePush;
 use Itmaker\DtpApp\Resources\CallResource;
 /**
  * Model call
@@ -74,7 +76,19 @@ class Call extends Model
     public function beforeSave()
     {
         if ($this->isDirty('employe_id') && $this->status == 'new' && $this->employe_id) {
-            $this->status = 'inprogress';    
+            $this->status = 'inprogress';
+
+            if ($this->employe && $this->employe->device_id) {
+                Queue::push(SendSinglePush::class, [
+                    'title' => 'К вам прикреплен заказ',
+                    'body' => $this->address,
+                    'token' => $this->employe->device_id,
+                    'data' => [
+                        'action_type' => 'call_attached',
+                        'call' => $this->id,
+                    ]
+                ]);    
+            }
         }
 
         if ($this->isDirty()) {

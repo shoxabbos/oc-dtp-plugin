@@ -66,6 +66,7 @@ Route::group([
     Route::get('call/{id}/cancel', 'Itmaker\DtpApp\Api\Calls@cancel');
     Route::get('call/{id}/arrived', 'Itmaker\DtpApp\Api\Calls@arrived');
     Route::get('call/{id}/accept', 'Itmaker\DtpApp\Api\Calls@accept');
+    Route::post('call/{id}/complete', 'Itmaker\DtpApp\Api\Calls@complete');
     Route::get('call/{id}/set-location', 'Itmaker\DtpApp\Api\Calls@setLocation');
 });
 

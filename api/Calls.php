@@ -116,6 +116,63 @@ class Calls extends Controller
     }
 
 
+    public function complete($id) {
+        $model = $this->user->calls()->where('id', $id)->first();
+
+        if (!$model) {
+            return response()->json(['error' => 'Call not found'], 404);
+        }
+
+        $data = Input::only('rating', 'text');
+
+        $rules = [
+            'rating' => 'integer|min:1|max:5',
+            'text' => 'string|max:255',
+        ];
+
+        $data['rating'] = (isset($data['rating']) && !empty($data['rating'])) ? $data['rating'] : 3;
+        $data['text'] = (isset($data['text']) && !empty($data['text'])) ? $data['text'] : "";
+
+
+        $validation = Validator::make($data, $rules);
+        if ($validation->fails()) {
+            return response()->json(['error' => $validation->messages()->first()], 422);
+        }
+
+        $model->status = 'completed';
+        $model->review_star = $data['rating'];
+        $model->review_text = $data['text'];
+        $model->save();
+
+        // send push to client
+        if ($model->client && $model->client->device_id) {
+            Queue::push(SendSinglePush::class, [
+                'title' => 'Заявка завершена',
+                'body' => '',
+                'token' => $model->client->device_id,
+                'data' => [
+                    'action_type' => 'call_completed',
+                    'call' => $model->id,
+                ],
+            ]); 
+        }
+
+        if ($call->employe && $call->employe->device_id) {
+            Queue::push(SendSinglePush::class, [
+                'title' => 'Заявка завершена',
+                'body' => '',
+                'token' => $model->employe->device_id,
+                'data' => [
+                    'action_type' => 'call_completed',
+                    'call' => $model->id,
+                ],
+            ]);
+        }
+
+        return new CallResource($model);
+    }
+
+
     public function accept($id) {
         $user = $this->user;
         $model = Call::find($id);
@@ -149,7 +206,11 @@ class Calls extends Controller
     }
 
     public function arrived($id) {
-        $call = $this->user->calls()->where('id', $id)->first();
+        if ($this->user->type == 'client') {
+            $call = $this->user->calls()->where('id', $id)->first();
+        } else {
+            $call = $this->user->employe_calls()->where('id', $id)->first();
+        }
 
         if (!$call) {
             return response()->json(['error' => 'Call not found'], 404);
