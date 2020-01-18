@@ -30,7 +30,7 @@ class Plugin extends PluginBase
             
             $model->hasMany['calls'] = [ CallModel::class, 'key' => 'client_id'];
             $model->hasMany['employe_calls'] = [ CallModel::class, 'key' => 'employe_id'];
-            $model->hasOne['insurance'] = Insurance::class;
+            $model->belongsTo['insurance'] = Insurance::class;
 
 
             $model->addDynamicMethod('getInsuranceIdOptions', function() use ($model) {

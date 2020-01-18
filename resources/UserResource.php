@@ -32,6 +32,7 @@ class UserResource extends Resource
                   "is_superuser" => $this->is_superuser,
                   "image" => $this->avatar ? $this->avatar->getThumb(250, 250, ['mode' => 'crop']) : null,
                   'active_call' => null,
+                  'insurance' => $this->insurance,
 		];
 
 

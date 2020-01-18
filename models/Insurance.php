@@ -1,6 +1,7 @@
 <?php namespace Itmaker\DtpApp\Models;
 
 use Model;
+use RainLab\User\Models\User;
 
 /**
  * Model
@@ -21,5 +22,9 @@ class Insurance extends Model
      * @var array Validation rules
      */
     public $rules = [
+    ];
+
+    public $hasOne = [
+        'insurance' => User::class
     ];
 }
