@@ -55,7 +55,7 @@ class User extends Controller
 
     public function update() {
         $user = $this->auth();
-        $data = Input::only('username', 'name', 'surname', 'password', 'password_confirmation', 'email', 'avatar');
+        $data = Input::only('username', 'name', 'surname', 'password', 'password_confirmation', 'email', 'avatar', 'insurance_id');
 
         $rules = [
             'name' => 'string|required',
@@ -63,7 +63,7 @@ class User extends Controller
             'username' => 'string|required',
             'email' => 'email|required',
             'avatar' => 'nullable|image',
-
+            'insurance_id' => 'exists:itmaker_dtpapp_insurances,id',
             'password' => 'sometimes|required|between:6,255|confirmed',
             'password_confirmation' => 'required_with:password|between:6,255',
         ];
