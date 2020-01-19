@@ -22,6 +22,12 @@ class Plugin extends PluginBase
         $this->extendingApp();
     }
 
+    public function registerMailTemplates()
+    {
+        return [
+            'itmaker.dtpapp::mail.new-call',
+        ];
+    }
 
     private function extendingModels()
     {

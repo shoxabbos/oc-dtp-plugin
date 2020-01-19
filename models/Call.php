@@ -72,6 +72,22 @@ class Call extends Model
         ];
     }
 
+    public function afterCreate() {
+        $data = [
+            'id' => $this->id,
+            'type' => $this->type,
+            'address' => $this->address,
+            'client' => [
+                'name' => $this->client->name,
+                'username' => $this->client->username,
+            ],
+            'comment' => $this->comment,
+        ];
+
+        \Mail::queue('itmaker.dtpapp::mail.new-call', ['call' => $data], function ($message) {
+            $message->to('19941001@inbox.ru', 'Admin Person');
+        });
+    }
 
     public function beforeSave()
     {
