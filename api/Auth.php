@@ -117,7 +117,7 @@ class Auth extends Controller
     }
 
     public function signup() {
-        $credentials = Input::only('name', 'surname', 'email', 'username', 'password', 'password_confirmation', 'type', 'insurance_id');
+        $credentials = Input::only('name', 'surname', 'username', 'password', 'password_confirmation', 'type', 'insurance_id');
 
         $rules = [
             'type'      => 'required|in:client,master,specialists',
@@ -125,13 +125,14 @@ class Auth extends Controller
             'surname'   => 'required|min:3',
             'username'  => 'required|unique:users,username',
             'password'  => 'required|min:6|confirmed',
-            'email'     => 'required|min:3|email|unique:users,email'
         ];
 
         $validation = Validator::make($credentials, $rules);
         if ($validation->fails()) {
             return response()->json(['error' => $validation->messages()->first()], 422);
         }
+
+        $credentials['email'] = $credentials['username']."@ascon.uz";
         
         try {
             $userModel = UserModel::create($credentials);
