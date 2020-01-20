@@ -33,7 +33,14 @@ class UserResource extends Resource
                   "image" => $this->avatar ? $this->avatar->getThumb(250, 250, ['mode' => 'crop']) : null,
                   'active_call' => null,
                   'insurance' => $this->insurance,
+                  'groups' => '',
 		];
+
+            $groups = $this->groups->lists('name');
+
+            if (!empty($groups) && is_array($groups)) {
+                  $data['groups'] = implode(", ", $groups);
+            }
 
 
 		return $data;
