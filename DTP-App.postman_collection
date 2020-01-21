@@ -1,770 +1,817 @@
 {
-	"id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-	"name": "DTP App",
-	"description": "",
-	"order": [
-		"bbbca5c7-4107-b8ca-dff1-239a056db46d",
-		"5b593591-d044-7f72-2d5b-26ec33f28a0e",
-		"d92c5d59-8af2-6ed4-bc19-17f32f171774"
-	],
-	"folders": [
+	"info": {
+		"_postman_id": "1ff59e8a-d552-49c0-9c5c-6f10219e206f",
+		"name": "Dtp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
-			"name": "client",
-			"description": "",
-			"order": [
-				"30edb8ba-ed39-b848-c179-a0b60f766ca3",
-				"c09f541f-54b7-dc32-f05b-955805d587c6",
-				"3701d297-0e03-d5fc-f9e7-3058c1772f50",
-				"04d7b7ec-32e2-9171-f48b-689e999ca50e",
-				"20796865-9984-990a-c39e-6695f92f8b29",
-				"b2ad242f-8eaa-c969-69f2-ce31d29581e8",
-				"f7b10c09-20f3-c84a-c310-21ffc4dd876d",
-				"1a9f8cdc-d9d3-9fb8-f45c-74005f9d9067"
+			"name": "auth",
+			"item": [
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "+998909000000",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "dsadsa",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/auth/signin",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "+99890351900512",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Shohabbos",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Olimjonov",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "19941001@inbox.uz12",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "master",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/auth/signup",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore password (step 1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/javascript",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "+998903519004",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://dtp.itmaker.uz/api/auth/restore-password",
+							"protocol": "http",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"auth",
+								"restore-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password (step 2)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "+998903519004",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "shoxabbos",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "622680",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://dtp.itmaker.uz/api/auth/reset-password?username=+998903519004&password=shoxabbos&code=439708",
+							"protocol": "http",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "+998903519004"
+								},
+								{
+									"key": "password",
+									"value": "shoxabbos"
+								},
+								{
+									"key": "code",
+									"value": "439708"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/auth/refresh-token?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE0NiwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzc1MjcyMDAsImV4cCI6MTU3NzUzMDgwMCwibmJmIjoxNTc3NTI3MjAwLCJqdGkiOiJ1bnNVRFJNRGRFNFM0TmxPIn0.tcXKlPeJT6Jg6Bb83vdqXu1qyqvdaxBXiLPINl7eBYw",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh-token"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE0NiwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzc1MjcyMDAsImV4cCI6MTU3NzUzMDgwMCwibmJmIjoxNTc3NTI3MjAwLCJqdGkiOiJ1bnNVRFJNRGRFNFM0TmxPIn0.tcXKlPeJT6Jg6Bb83vdqXu1qyqvdaxBXiLPINl7eBYw"
+								}
+							]
+						}
+					},
+					"response": []
+				}
 			],
-			"folders_order": [],
-			"owner": "498191",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+			"protocolProfileBehavior": {}
 		},
 		{
-			"id": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-			"name": "empole",
-			"description": "",
-			"order": [
-				"0b9b64bf-984d-1919-3fcd-e34cd5c5263a",
-				"2cd72fd5-a5a2-651e-1311-1be9c6c8d54a",
-				"e0090636-daa2-15c4-fa77-8d06ac620ec4",
-				"0584fcd2-c8cd-3c5d-6efd-def6d05ca3b7",
-				"03c2ef21-1e6e-7f34-d551-fc83875d7c41",
-				"21a768b9-f2da-03c0-e530-adb6823ac856",
-				"1cf69f26-2509-02e4-9ef5-43415e82bf6b",
-				"320c140d-cd84-f056-05b6-47d46deafce0"
+			"name": "user",
+			"item": [
+				{
+					"name": "get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/user/get?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzkxNTk1OTcsImV4cCI6MTg3OTE1OTU5NywibmJmIjoxNTc5MTU5NTk3LCJqdGkiOiJhWWhybW1CZk1ncUtUcDR0In0.NM_VMNO31YZFKN-MOA4gK_YCCXHTCi44YwHc0igPiAg",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"user",
+								"get"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzkxNTk1OTcsImV4cCI6MTg3OTE1OTU5NywibmJmIjoxNTc5MTU5NTk3LCJqdGkiOiJhWWhybW1CZk1ncUtUcDR0In0.NM_VMNO31YZFKN-MOA4gK_YCCXHTCi44YwHc0igPiAg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Shohabbos1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "+998903519004",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Olimjonov",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "19941001@inbox.ru",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/Users/user/Downloads/Telegram Desktop/1_main (3).jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/user/update?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE0NiwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzczMDg2NTcsImV4cCI6MTU3NzMxMjI1NywibmJmIjoxNTc3MzA4NjU3LCJqdGkiOiJmRktsOENhbU94YjkwVDBJIn0.Qyl-bdoABMUchZeSzqDqgEYObppiXvTJUzxDD3Q7F_g",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"user",
+								"update"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE0NiwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzczMDg2NTcsImV4cCI6MTU3NzMxMjI1NywibmJmIjoxNTc3MzA4NjU3LCJqdGkiOiJmRktsOENhbU94YjkwVDBJIn0.Qyl-bdoABMUchZeSzqDqgEYObppiXvTJUzxDD3Q7F_g"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set device conf",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/user/set-device-conf?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE0NiwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzg5MjM3MjAsImV4cCI6MTU3ODkyNzMyMCwibmJmIjoxNTc4OTIzNzIwLCJqdGkiOiJBcDVVUFMwMEduc0NITlhzIn0.x6R8FP164tLpyQ6A_bGEA6-Hcahm3jV05ljv4DMUqTg&device_id=2398322389&=",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"user",
+								"set-device-conf"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE0NiwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzg5MjM3MjAsImV4cCI6MTU3ODkyNzMyMCwibmJmIjoxNTc4OTIzNzIwLCJqdGkiOiJBcDVVUFMwMEduc0NITlhzIn0.x6R8FP164tLpyQ6A_bGEA6-Hcahm3jV05ljv4DMUqTg"
+								},
+								{
+									"key": "device_id",
+									"value": "2398322389"
+								},
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
 			],
-			"folders_order": [],
-			"owner": "498191",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+			"protocolProfileBehavior": {}
 		},
 		{
-			"id": "0669b24a-5a76-ba51-8760-83deb764ad1b",
-			"name": "master",
-			"description": "",
-			"order": [
-				"6e066e9d-f190-4881-4dc1-661645f7001f",
-				"9baa191f-c903-f9b1-4d41-74447b3b0090"
+			"name": "helper",
+			"item": [
+				{
+					"name": "Tariffs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/helper/tariffs",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"helper",
+								"tariffs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get services list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://dtp.itmaker.uz/api/helper/services?type=crash",
+							"protocol": "http",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"helper",
+								"services"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "crash"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insurances",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://dtp.itmaker.uz/api/helper/insurances",
+							"protocol": "http",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"helper",
+								"insurances"
+							]
+						}
+					},
+					"response": []
+				}
 			],
-			"folders_order": [],
-			"owner": "498191",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03"
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "calls",
+			"item": [
+				{
+					"name": "Create call",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "file://",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "type",
+									"value": "crash",
+									"type": "text"
+								},
+								{
+									"key": "coor_lat",
+									"value": "41",
+									"type": "text"
+								},
+								{
+									"key": "coor_long",
+									"value": "69",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Tashkent",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "Salom shox",
+									"type": "text"
+								},
+								{
+									"key": "services[][service_id]",
+									"value": "13",
+									"type": "text"
+								},
+								{
+									"key": "images[0]",
+									"type": "file",
+									"src": "/Users/user/Downloads/Telegram Desktop/1_main (3).jpg"
+								},
+								{
+									"key": "images[1]",
+									"type": "file",
+									"src": "/Users/user/Downloads/Telegram Desktop/1_main.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/calls?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzkxNTk3MDgsImV4cCI6MTg3OTE1OTcwOCwibmJmIjoxNTc5MTU5NzA4LCJqdGkiOiJCbm83TjNKVjlkMkFxWWtOIn0.y8cNGK0bb9oC1i8x97y6BlFbx5qDHSdTaWcIEDJJc18",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzkxNTk3MDgsImV4cCI6MTg3OTE1OTcwOCwibmJmIjoxNTc5MTU5NzA4LCJqdGkiOiJCbm83TjNKVjlkMkFxWWtOIn0.y8cNGK0bb9oC1i8x97y6BlFbx5qDHSdTaWcIEDJJc18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/call/884?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE1OSwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzk1OTE0MDEsImV4cCI6MTU3OTU5NzQwMSwibmJmIjoxNTc5NTkxNDAxLCJqdGkiOiJzSEFuc09hMkhwRGdJYkhkIn0.MI289He9HaVvxItP6qV7qzLz4WGgaH26Kfn1TKUEEYA",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"call",
+								"884"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE1OSwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzk1OTE0MDEsImV4cCI6MTU3OTU5NzQwMSwibmJmIjoxNTc5NTkxNDAxLCJqdGkiOiJzSEFuc09hMkhwRGdJYkhkIn0.MI289He9HaVvxItP6qV7qzLz4WGgaH26Kfn1TKUEEYA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel call",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/call/651/cancel?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE1OSwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzk1OTE0MDEsImV4cCI6MTU3OTU5NzQwMSwibmJmIjoxNTc5NTkxNDAxLCJqdGkiOiJzSEFuc09hMkhwRGdJYkhkIn0.MI289He9HaVvxItP6qV7qzLz4WGgaH26Kfn1TKUEEYA",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"call",
+								"651",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE1OSwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzk1OTE0MDEsImV4cCI6MTU3OTU5NzQwMSwibmJmIjoxNTc5NTkxNDAxLCJqdGkiOiJzSEFuc09hMkhwRGdJYkhkIn0.MI289He9HaVvxItP6qV7qzLz4WGgaH26Kfn1TKUEEYA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/calls?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE1OSwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzk1OTE0MDEsImV4cCI6MTU3OTU5NzQwMSwibmJmIjoxNTc5NTkxNDAxLCJqdGkiOiJzSEFuc09hMkhwRGdJYkhkIn0.MI289He9HaVvxItP6qV7qzLz4WGgaH26Kfn1TKUEEYA",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE1OSwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzk1OTE0MDEsImV4cCI6MTU3OTU5NzQwMSwibmJmIjoxNTc5NTkxNDAxLCJqdGkiOiJzSEFuc09hMkhwRGdJYkhkIn0.MI289He9HaVvxItP6qV7qzLz4WGgaH26Kfn1TKUEEYA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept call",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzkxNTk3MDgsImV4cCI6MTg3OTE1OTcwOCwibmJmIjoxNTc5MTU5NzA4LCJqdGkiOiJCbm83TjNKVjlkMkFxWWtOIn0.y8cNGK0bb9oC1i8x97y6BlFbx5qDHSdTaWcIEDJJc18",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "assdads",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "adsadsads",
+									"value": "adsdsa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/call/718/accept",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"call",
+								"718",
+								"accept"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/call/727/set-location?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzkxNTk3MDgsImV4cCI6MTg3OTE1OTcwOCwibmJmIjoxNTc5MTU5NzA4LCJqdGkiOiJCbm83TjNKVjlkMkFxWWtOIn0.y8cNGK0bb9oC1i8x97y6BlFbx5qDHSdTaWcIEDJJc18&coor_lat=38.323673&coor_long=23.87327",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"call",
+								"727",
+								"set-location"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1NzkxNTk3MDgsImV4cCI6MTg3OTE1OTcwOCwibmJmIjoxNTc5MTU5NzA4LCJqdGkiOiJCbm83TjNKVjlkMkFxWWtOIn0.y8cNGK0bb9oC1i8x97y6BlFbx5qDHSdTaWcIEDJJc18"
+								},
+								{
+									"key": "coor_lat",
+									"value": "38.323673"
+								},
+								{
+									"key": "coor_long",
+									"value": "23.87327"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get new calls",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dtp.itmaker.uz/api/calls/new?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzg5OTg4MDgsImV4cCI6MTU3OTAwMjQwOCwibmJmIjoxNTc4OTk4ODA4LCJqdGkiOiJyVXhCZkFhQnNFdnBlaldWIn0.QE6t5borEF5c-cdm_BibGSWpikTYMHtVVT4o4twlFw8",
+							"protocol": "https",
+							"host": [
+								"dtp",
+								"itmaker",
+								"uz"
+							],
+							"path": [
+								"api",
+								"calls",
+								"new"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2MCwiaXNzIjoiaHR0cHM6Ly9kdHAuaXRtYWtlci51ei9hcGkvYXV0aC9zaWduaW4iLCJpYXQiOjE1Nzg5OTg4MDgsImV4cCI6MTU3OTAwMjQwOCwibmJmIjoxNTc4OTk4ODA4LCJqdGkiOiJyVXhCZkFhQnNFdnBlaldWIn0.QE6t5borEF5c-cdm_BibGSWpikTYMHtVVT4o4twlFw8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get distance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://maps.googleapis.com/maps/api/distancematrix/json?origins=41.2716182187,69.2605837248&destinations=41.3352949000,69.2129805000&mode=driving&language=ru-RU&key=AIzaSyCoMtd7r21tetH1XMUTP9iee4R6qSGbn4k",
+							"protocol": "https",
+							"host": [
+								"maps",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"maps",
+								"api",
+								"distancematrix",
+								"json"
+							],
+							"query": [
+								{
+									"key": "origins",
+									"value": "41.2716182187,69.2605837248"
+								},
+								{
+									"key": "destinations",
+									"value": "41.3352949000,69.2129805000"
+								},
+								{
+									"key": "mode",
+									"value": "driving"
+								},
+								{
+									"key": "language",
+									"value": "ru-RU"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyCoMtd7r21tetH1XMUTP9iee4R6qSGbn4k"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
-	"folders_order": [
-		"b1235bc5-aabc-49b6-20b8-0e2986763aa8",
-		"a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-		"0669b24a-5a76-ba51-8760-83deb764ad1b"
-	],
-	"timestamp": 0,
-	"owner": "498191",
-	"public": false,
-	"requests": [
-		{
-			"id": "03c2ef21-1e6e-7f34-d551-fc83875d7c41",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/employe/call/complated",
-			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "call_id",
-					"value": "6",
-					"type": "text"
-				}
-			],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677519137,
-			"name": "Get completed calls",
-			"description": "etot metod dlya zaversheniya vizova peredayetsya call_id,\nposle chego call->status ravnyayetsya 'complated', oznochayet chto vizov zavershyen\n",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "04d7b7ec-32e2-9171-f48b-689e999ca50e",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/client/calling",
-			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "services[]",
-					"value": "6",
-					"type": "text"
-				},
-				{
-					"key": "services[]",
-					"value": "4",
-					"type": "text"
-				},
-				{
-					"key": "employe_group_code",
-					"value": "specialists",
-					"type": "text"
-				},
-				{
-					"key": "addantial_comment",
-					"value": "rebyenok isterit",
-					"type": "text"
-				},
-				{
-					"key": "coor_lat",
-					"value": "12.3432423423",
-					"type": "text"
-				},
-				{
-					"key": "coor_long",
-					"value": "11.2342342234",
-					"type": "text"
-				},
-				{
-					"key": "address",
-					"value": "tashkent",
-					"type": "text"
-				}
-			],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677747558,
-			"name": "Client calling",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "0584fcd2-c8cd-3c5d-6efd-def6d05ca3b7",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/employe/calls/spents",
-			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677477459,
-			"name": "Get spents calls",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "0b9b64bf-984d-1919-3fcd-e34cd5c5263a",
-			"headers": "Active-Locale: ru\n",
-			"headerData": [
-				{
-					"key": "Active-Locale",
-					"value": "ru",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://dtp.itmaker.uz/api/specialist/login",
-			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "login",
-					"value": "+998903297989",
-					"type": "text"
-				},
-				{
-					"key": "password",
-					"value": "123123",
-					"type": "text"
-				}
-			],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677392494,
-			"name": "Employe login",
-			"description": "vxod sotridnika",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "1a9f8cdc-d9d3-9fb8-f45c-74005f9d9067",
-			"name": "update user",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"method": "POST",
-			"helperAttributes": {},
-			"headers": "",
-			"dataMode": "params",
-			"data": [
-				{
-					"key": "username",
-					"value": "+998913297989",
-					"type": "text"
-				},
-				{
-					"key": "name",
-					"value": "Sasha",
-					"type": "text"
-				},
-				{
-					"key": "surname",
-					"value": "Raimov",
-					"type": "text"
-				},
-				{
-					"key": "password",
-					"value": "asdqwe",
-					"type": "text"
-				},
-				{
-					"key": "password_confirmation",
-					"value": "asdqwe",
-					"type": "text"
-				},
-				{
-					"key": "avatar",
-					"type": "file",
-					"src": "/D:/Downloads/koleso.png",
-					"value": ""
-				}
-			],
-			"rawModeData": "",
-			"url": "{{domain}}/client/update-user",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
-		},
-		{
-			"id": "1cf69f26-2509-02e4-9ef5-43415e82bf6b",
-			"headers": "Active-Locale: ru\n",
-			"headerData": [
-				{
-					"key": "Active-Locale",
-					"value": "ru",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://dtp.itmaker.uz/api/employe/locations/set",
-			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "coor_lat",
-					"value": "11.2323423334532",
-					"type": "text"
-				},
-				{
-					"key": "coor_long",
-					"value": "12.2342346234432",
-					"type": "text"
-				}
-			],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677530671,
-			"name": "Set locations",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "20796865-9984-990a-c39e-6695f92f8b29",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/client/calls/history",
-			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677776841,
-			"name": "Client calls-history",
-			"description": "polucheniye istorii vizovov, trebuyetsya tol'ko token",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "21a768b9-f2da-03c0-e530-adb6823ac856",
-			"name": "Prinyatiye vizova so storoni sotrudnika",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"method": "POST",
-			"helperAttributes": {},
-			"headers": "",
-			"dataMode": "params",
-			"data": [
-				{
-					"key": "call_id",
-					"value": "6",
-					"type": "text"
-				}
-			],
-			"rawModeData": "",
-			"url": "{{domain}}/employe/call/employed",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d"
-		},
-		{
-			"id": "2cd72fd5-a5a2-651e-1311-1be9c6c8d54a",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/employe/get-user",
-			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677421179,
-			"name": "Employe get-user",
-			"description": "etot metod otvechayen za polucheniya usera (mastera ili specialista). v otvete vozvrashayetsya vsya informatsiya ob usere i token",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "30edb8ba-ed39-b848-c179-a0b60f766ca3",
-			"headers": "Content-Type: application/x-www-form-urlencoded\nActive-Locale: ru\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Active-Locale",
-					"value": "ru",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://dtp.itmaker.uz/api/client/register",
-			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "name",
-					"value": "Sasha Doniyorovich",
-					"type": "text"
-				},
-				{
-					"key": "surname",
-					"value": "Raimov",
-					"type": "text"
-				},
-				{
-					"key": "phone",
-					"value": "+998901234567",
-					"type": "text"
-				},
-				{
-					"key": "password",
-					"value": "123!@#",
-					"type": "text"
-				},
-				{
-					"key": "password_confirmation",
-					"value": "123!@#",
-					"type": "text"
-				},
-				{
-					"key": "email",
-					"value": "testmail@test.mail",
-					"type": "text"
-				}
-			],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677583520,
-			"name": "Client register",
-			"description": "tut idyot registraciya pol'zovateley, nujno peredavat' \nname => imya pol'zovatelya, \nsurname => familiya pol'zovatelya, \nphone => telefon pol'zovatelya, \npassword => parol', \npassword_confirmation => povtor parol'ya,\nvse polya obyazatel'ni!\n\t\n\tvozvrashayetsya user, u nego yest pole \n\nis_activated => false,\n\n\tsleduyushego metoda poka net no skoro dobavim,\n\tetot metod verifikatsii, v sms prishedsheye po telefonu budet ukazan kod verifikatsii, razrabotchik prejde chem pristupish za eto delo svyajis so mnoy)))",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "320c140d-cd84-f056-05b6-47d46deafce0",
-			"headers": "Accept-Locale: en\nActive-Locale: ru\n",
-			"headerData": [
-				{
-					"key": "Accept-Locale",
-					"value": "en",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Active-Locale",
-					"value": "ru",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://dtp.itmaker.uz/api/employe/locations/get/23",
-			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677545787,
-			"name": "Get location",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "3701d297-0e03-d5fc-f9e7-3058c1772f50",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/client/get-user",
-			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677720572,
-			"name": "Client get-user",
-			"description": "polucheniye dannix o pol'zovatele, trebuyetsya tol'ko token.",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "5b593591-d044-7f72-2d5b-26ec33f28a0e",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/invalidate?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU0LCJpc3MiOiJodHRwOi8vZHRwLml0bWFrZXIudXovYXBpL3JlZnJlc2giLCJpYXQiOjE1NzM1Njc1MjksImV4cCI6MTU3MzU3MjA2NCwibmJmIjoxNTczNTY4NDY0LCJqdGkiOiI2bzBZVE8xd3pHN3ZoRXNaIn0.v-9G1T99jVDQLnWU5GAoRCmo_86tjd_a75uHFwqEy6I",
-			"queryParams": [
-				{
-					"key": "token",
-					"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU0LCJpc3MiOiJodHRwOi8vZHRwLml0bWFrZXIudXovYXBpL3JlZnJlc2giLCJpYXQiOjE1NzM1Njc1MjksImV4cCI6MTU3MzU3MjA2NCwibmJmIjoxNTczNTY4NDY0LCJqdGkiOiI2bzBZVE8xd3pHN3ZoRXNaIn0.v-9G1T99jVDQLnWU5GAoRCmo_86tjd_a75uHFwqEy6I",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				}
-			],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677286383,
-			"name": "Invalidate token",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "6e066e9d-f190-4881-4dc1-661645f7001f",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/master/register",
-			"folder": "0669b24a-5a76-ba51-8760-83deb764ad1b",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "name",
-					"value": "Sasha",
-					"type": "text"
-				},
-				{
-					"key": "surname",
-					"value": "Raimov",
-					"type": "text"
-				},
-				{
-					"key": "phone",
-					"value": "+998900001126",
-					"type": "text"
-				},
-				{
-					"key": "email",
-					"value": "sasha@sas.ha",
-					"type": "text"
-				},
-				{
-					"key": "groups[]",
-					"value": "5",
-					"type": "text"
-				},
-				{
-					"key": "groups[]",
-					"value": "6",
-					"type": "text"
-				},
-				{
-					"key": "password",
-					"value": "123123",
-					"type": "text"
-				},
-				{
-					"key": "password_confirmation",
-					"value": "123123",
-					"type": "text"
-				}
-			],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677383760,
-			"name": "Register master",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "9baa191f-c903-f9b1-4d41-74447b3b0090",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/master/login",
-			"folder": "0669b24a-5a76-ba51-8760-83deb764ad1b",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "login",
-					"value": "+998900001126",
-					"type": "text"
-				},
-				{
-					"key": "password",
-					"value": "123123",
-					"type": "text"
-				}
-			],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677800206,
-			"name": "Master login",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "b2ad242f-8eaa-c969-69f2-ce31d29581e8",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/client/last-call",
-			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677767468,
-			"name": "Client last-call",
-			"description": "posledniy vizov, trebuyetsya token\n",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "bbbca5c7-4107-b8ca-dff1-239a056db46d",
-			"headers": "Active-Locale: uz\n",
-			"headerData": [
-				{
-					"key": "Active-Locale",
-					"value": "uz",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://dtp.itmaker.uz/api/index",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677343126,
-			"name": "Get mual",
-			"description": "zravstvuy razrabotchik, etim metodom mojesh proverit' rabotayetli danniye API.\n\nyesli chto to ne tak mojesh somnoy svyazatsya cherez:\n\ntelegram => @webmasterSasha\ntel \t => +998903297989\nfacebook => https://www.facebook.com/webmasterSasha",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "c09f541f-54b7-dc32-f05b-955805d587c6",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/client/login",
-			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "login",
-					"value": "+998901234567",
-					"type": "text"
-				},
-				{
-					"key": "password",
-					"value": "123!@#",
-					"type": "text"
-				}
-			],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677590874,
-			"name": "Client login",
-			"description": "tut peredayem vsego 2 parametra:\n{\n\tlogin: '+998903297989'//nomer telefona\n\tpassword: 'asd2e412asd'//parol' polzovatelya\n}\n\ndalee v otvete poluchayem token usera i samogo usera,\nvo vsex drugix metodax token obyazatelen, on ustarevayet za 1 chas, kogda prilojeniye ne aktivno mojesh so starim tokenom popitatsya poluchit' usera cheres url .../get-user, yesli vidayetsya oshibka kiday pol'zovatelya na stranicu vxoda",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "d92c5d59-8af2-6ed4-bc19-17f32f171774",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/get-user-groups",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677353783,
-			"name": "Get user groups",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "e0090636-daa2-15c4-fa77-8d06ac620ec4",
-			"headers": "",
-			"headerData": [],
-			"url": "http://dtp.itmaker.uz/api/employe/calls/active/2",
-			"folder": "a4dff508-5d7b-44fe-73e8-a5ec3a14bb2d",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1574677456374,
-			"name": "Get active call",
-			"description": "s etim metodom mojno poluchit vse activniye zadachi za kotorix mojet vzyatsya sotrudnik(master ili specialist), sortirovka idyet po user->user_role",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"responses": []
-		},
-		{
-			"id": "f7b10c09-20f3-c84a-c310-21ffc4dd876d",
-			"name": "get call to id",
-			"description": "",
-			"collectionId": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"method": "GET",
-			"helperAttributes": {},
-			"headers": "",
-			"data": [],
-			"rawModeData": "",
-			"url": "{{domain}}/client/call/8",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "70eab8cf-c8cf-49b6-e399-73b98ae2bc03",
-			"folder": "b1235bc5-aabc-49b6-20b8-0e2986763aa8"
-		}
-	]
+	"protocolProfileBehavior": {}
 }
