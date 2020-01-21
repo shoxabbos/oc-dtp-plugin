@@ -21,6 +21,8 @@ class CallResource extends Resource
 			'deleted_at' => $this->deleted_at ? $this->deleted_at->format('Y-m-d H:i') : null,
 			'updated_at' => $this->updated_at ? $this->updated_at->format('Y-m-d H:i') : null,
 			'created_at' => $this->created_at ? $this->created_at->format('Y-m-d H:i') : null,
+			'review_star' => $this->review_star,
+			'review_text' => $this->review_text,
 
 			'user' => $this->client ? new UserResource($this->client) : null,
 			'employe' => $this->employe ? new UserResource($this->employe) : null,

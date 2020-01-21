@@ -19,7 +19,7 @@ use Itmaker\DtpApp\Jobs\NewCallCreated;
 class Calls extends Controller
 {
     
-    private $user;
+    private $user; 
 
     public function __construct() {
         $this->user = $this->auth();
@@ -30,7 +30,7 @@ class Calls extends Controller
         $page = input('page', 1);
         $perpage = input('page', 10);
 
-        $result = Call::where('status', 'new')->paginate($perpage, $page);
+        $result = Call::where('status', 'new')->orderByDesc('id')->paginate($perpage, $page);
 
         return CallResource::collection($result);
     }
@@ -341,9 +341,7 @@ class Calls extends Controller
             Queue::push(NewCallCreated::class, ['id' => $call->id]);
         }
 
-        return response()->json([
-            'data' => $call
-        ]);
+        return new CallResource($call);
     }
 
 
