@@ -84,3 +84,15 @@
 1.0.30:
     - 'Add insurence id fields to users'
     - migration1030.php
+1.0.31:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls_7.php
+1.0.32:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls_8.php
+1.0.33:
+    - 'Updated table itmaker_dtpapp_calls'
+    - builder_table_update_itmaker_dtpapp_calls_9.php
+1.0.34:
+    - 'Drop table itmaker_dtpapp_rates'
+    - builder_table_delete_itmaker_dtpapp_rates.php
