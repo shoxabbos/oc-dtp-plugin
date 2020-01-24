@@ -35,6 +35,7 @@ class UserResource extends Resource
                   'insurance_id' => $this->insurance_id,
                   'insurance' => $this->insurance,
                   'groups' => '',
+                  'call_price' => '30000'
 		];
 
             $groups = $this->groups->lists('name');

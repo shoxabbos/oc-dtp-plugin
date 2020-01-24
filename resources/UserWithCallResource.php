@@ -35,6 +35,7 @@ class UserWithCallResource extends Resource
                   'insurance_id' => $this->insurance_id,
                   'insurance' => $this->insurance,
                   'groups' => '',
+                  'call_price' => '30000'
 		];
 
             if ($this->type == 'client') {
