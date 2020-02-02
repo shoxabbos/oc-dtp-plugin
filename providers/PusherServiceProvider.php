@@ -22,9 +22,9 @@ class PusherServiceProvider extends ServiceProvider
     {
         $this->app->singleton('pusher', function() {
             return new Pusher(
-                '9090d7f4b6974f9e0c63',
-                'c33072f80b8d8dd9ad47',
-                '895882',
+                'b5417a2494115d7be8e3',
+                'ec5291ddbfe11f6b85d9',
+                '941261',
                 $this->options
             );
         });
