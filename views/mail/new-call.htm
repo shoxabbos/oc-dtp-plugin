@@ -5,11 +5,11 @@ ID: #{{ call.id }}
 TYPE: #{{ call.type }}
 Адрес:  {{ call.address }},
 Клиент:  {{ call.client.name }} {{ call.client.username }},
-Описание:  {{ call.address }},
+Описание:  {{ call.comment }},
 ==
 
 <p>ID: <strong> #{{ call.id }} </strong></p>
 <p>TYPE:  <strong>#{{ call.type }}</strong>,</p>
 <p>Адрес:  <strong>{{ call.address }}</strong>,</p>
 <p>Клиент:  <strong>{{ call.client.name }} {{ call.client.username }}</strong>,</p>
-<p>Описание:  <strong>{{ call.address }}</strong>,</p>
+<p>Описание:  <strong>{{ call.comment }}</strong>,</p>
