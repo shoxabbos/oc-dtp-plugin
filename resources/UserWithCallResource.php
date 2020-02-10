@@ -40,7 +40,7 @@ class UserWithCallResource extends Resource
                   'call_price' => '30000',
                   'call_truck_price' => '30000',
                   'call_master_price' => '30000',
-                  'call_assessor_price' => '30000',
+                  'call_assessor_price' => '0',
 		];
 
             if ($this->type == 'client') {
